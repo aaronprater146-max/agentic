@@ -31,4 +31,4 @@ Workflow: **read memory → download only what is needed → use tools → save 
 
 Connectivity is verified and the current goals are documented. No tools are developed or installed, and no product builds have been created. See the worklog for verification results and continuation notes.
 
-The setup is published on `arena/f686d89f-agentic`, not `main`. Until merged, use that branch to retrieve the handoff and latest memory. Work only on the branch assigned to the current Arena session.
+When an assigned branch does not yet contain the setup, retrieve the handoff and latest memory from the latest confirmed storage ref; do not assume `main` includes unmerged work. Work only on the branch assigned to the current Arena session.

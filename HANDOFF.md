@@ -18,7 +18,7 @@
 | `tools/` | Reusable headless tool source and usage instructions, to be developed later. |
 | `products/` | Finished outputs and the information needed to find and use them. |
 
-## Start of a chat
+## Cold start (start of a chat)
 
 1. Read this handoff from the latest saved storage ref, then read `GOALS.md`, `temporary/WORKLOG.txt`, and `TOOL_LOG.txt`.
 2. Download `TOOL_LOG.txt` into the Arena workspace as **`ARENA_LOG.txt`**. This is the working copy: the chat edits it to record tool availability, local installs, usage, outcomes, product locations, and continuation notes.
@@ -58,17 +58,18 @@ Delete workspace copies, **not** the reusable tools, stored products, or persist
 ## Connectivity and branch rules
 
 - Repository: `https://github.com/aaronprater146-max/agentic`.
-- The initial setup is on **`arena/f686d89f-agentic`**. Until it is merged into `main`, read this handoff and memory from that branch; do not assume the default branch has the latest files.
-- Always work on the branch assigned to the current Arena session. In this session it is `arena/f686d89f-agentic`; do not switch branches, create another working branch, or push elsewhere.
+- At cold start, use the latest confirmed storage ref named in the saved worklog. Do not assume the default branch has unmerged handoff or memory files.
+- Always work on the branch assigned to the current Arena session. Determine it with `git branch --show-current`; do not switch branches, create another working branch, or push elsewhere.
 - Use `git` for status, diffs, commits, and pushes; use `gh` for GitHub operations and individual-file retrieval. No credential sharing in chat is needed.
 - A local edit alone does not prove remote persistence. The worklog must distinguish local checks from a confirmed GitHub upload/download.
 - Resolve divergent snapshots before overwriting them; do not force-push or blindly replace another chat's newer memory. If a session branch is not merged, state where its latest snapshot lives so a later chat can retrieve it.
 
-Example: download just the initial handoff without cloning the repository (run from a scratch/workspace directory, not over the canonical tracked file):
+Example: download just the handoff without cloning the repository (run from a scratch/workspace directory, not over the canonical tracked file):
 
 ```sh
+storage_ref='your-latest-confirmed-storage-ref'
 gh api -H 'Accept: application/vnd.github.raw+json' \
-  'repos/aaronprater146-max/agentic/contents/HANDOFF.md?ref=arena%2Ff686d89f-agentic' \
+  "repos/aaronprater146-max/agentic/contents/HANDOFF.md?ref=${storage_ref//\//%2F}" \
   > HANDOFF.md
 ```
 
