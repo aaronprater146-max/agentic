@@ -11,7 +11,7 @@
   "tools": [
     {
       "id": "godot-headless",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "path": "tools/godot-headless",
       "metadata": "tools/godot-headless/TOOL.json",
       "readme": "tools/godot-headless/README.md",

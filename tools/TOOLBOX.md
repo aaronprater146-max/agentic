@@ -13,7 +13,7 @@ Machine-readable metadata lives in [`toolbox.json`](toolbox.json).
 
 | ID | Version | Purpose | Entry point |
 | --- | --- | --- | --- |
-| [`godot-headless`](godot-headless/README.md) | 0.1.0 | Headless Godot 4.7 Pong scaffold, in-engine confirmation, target-aware export wrapper, and source bundler | `tools/godot-headless/bin/godot_headless.py` |
+| [`godot-headless`](godot-headless/README.md) | 0.1.1 | Headless Godot 4.7 Pong scaffold, in-engine confirmation, target-aware export wrapper, and source bundler | `tools/godot-headless/bin/godot_headless.py` |
 
 ## Fetch policy
 

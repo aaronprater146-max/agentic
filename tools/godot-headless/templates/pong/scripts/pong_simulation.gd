@@ -1,4 +1,3 @@
-class_name ArenaPongSimulation
 extends RefCounted
 
 # Pure game state so the same gameplay is exercised by the headless test and

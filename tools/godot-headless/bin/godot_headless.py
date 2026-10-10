@@ -30,7 +30,7 @@ from typing import Any, Iterable
 
 
 TOOL_ID = "godot-headless"
-TOOL_VERSION = "0.1.0"
+TOOL_VERSION = "0.1.1"
 GODOT_TAG_DEFAULT = "4.7.2-stable"
 SCONS_VERSION = "4.10.1"
 PASS_MARKER = "PONG_CONFIRMATION_PASS"
