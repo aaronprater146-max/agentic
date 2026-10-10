@@ -1,0 +1,10 @@
+{
+  "action": "bundle-product",
+  "bundle": "/tmp/arena-godot-pong-proof.NI7QxB/run/ArenaPong-0.1.2-source.zip",
+  "included_confirmation_report": true,
+  "sha256": "c36e2f1df62c5c3d16ccfa217a654f5284c25859c36f74d09119ee930abf4e3d",
+  "size_bytes": 8391,
+  "status": "passed",
+  "tool": "godot-headless",
+  "tool_version": "0.1.2"
+}

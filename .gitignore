@@ -14,3 +14,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+# Generated import caches must not accompany staged WORK products.
+/WORK/**/.godot/
+/WORK/**/__pycache__/

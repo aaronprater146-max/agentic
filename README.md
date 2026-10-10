@@ -1,34 +1,67 @@
 # agentic
 
-Deep storage and persistent memory for creating high-quality products in Arena. This repository will contain reusable headless tools and finished outputs; Arena downloads only what it needs, saves the result and continuation notes, then removes disposable local tool installations to stay small.
+Durable deep storage for Arena-operated, headless production tools and their
+verified products. Arena downloads only the tool it needs, runs it in a
+disposable workspace, uploads the result and compact provenance to this
+repository, verifies the remote copy, gives the user a download URL, and then
+removes the local runtime/tool copy.
 
 **Agents: read [HANDOFF.md](HANDOFF.md) first.**
 
-## Current goals
+## Current delivery
 
-An **Arena-operated, headless creative-to-build tool suite**:
+The first reusable toolbox entry is
+[`godot-headless`](tools/godot-headless/README.md) **v0.1.2**. It provides a
+headless Godot 4.7 workflow that can:
 
-- **Blender:** scripted asset creation, scene editing, and rendering.
-- **Layered images:** editable artwork and compositing instead of Stable Diffusion.
-- **Godot:** project creation, asset integration, validation, and exports.
-- **Android:** SDK support and repeatable package builds.
-- **Windows:** possible `.exe` creation and packaging, to be scoped later.
+- scaffold a small Pong game against a computer opponent;
+- validate its Windows 10/11 and Android 9+ export configuration;
+- source-build a temporary Linux headless confirmation runtime when an engine
+  binary is unavailable;
+- run an in-engine GDScript confirmation and require `PONG_CONFIRMATION_PASS`;
+- bundle a compact source product and safely clean the marked Arena workspace;
+- invoke Windows/Android exports when matching templates and target SDK tools
+  are provisioned.
 
-Read [GOALS.md](GOALS.md) for the full vision. **Planning comes next; tools are not implemented yet.**
+The first proof product is
+[`WORK/arena-pong-v0.1.2/`](WORK/arena-pong-v0.1.2/): a source ZIP whose
+headless engine confirmation passed. It is **configured** for Windows 10/11
+x86_64 and Android 9+ (API 28, `arm64-v8a` and `armeabi-v7a`). No fake `.exe`
+or `.apk` is included: this Arena worker lacked matching export templates and,
+for Android, the SDK/JDK. See the product README for exact status and the
+verified download link.
 
 ## Storage map
 
-- [GOALS.md](GOALS.md): current capability goals, with confirmed targets and optional Windows scope.
-- [TOOL_LOG.txt](TOOL_LOG.txt): canonical catalog/log template; download a copy to Arena as `ARENA_LOG.txt`. Do not edit the original during routine use.
-- [temporary/WORKLOG.txt](temporary/WORKLOG.txt): latest memory snapshot, overwritten at checkpoints for continuity across chats.
-- [temporary/](temporary/): small continuation data, intentionally persisted despite the name.
-- [tools/](tools/): headless tools and their instructions, to be developed later.
-- [products/](products/): finished products and retrieval information.
+- [HANDOFF.md](HANDOFF.md): agent lifecycle, cold-start instructions, and
+  cleanup/publishing rules.
+- [GOALS.md](GOALS.md): current capability goals and delivered/pending scope.
+- [tools/TOOLBOX.md](tools/TOOLBOX.md): human-readable toolbox index.
+- [tools/toolbox.json](tools/toolbox.json): machine-readable toolbox index.
+- [tools/godot-headless/](tools/godot-headless/): first reusable tool source,
+  template, metadata, tests, and usage guide.
+- [WORK/](WORK/): finished, downloadable products and compact provenance. New
+  products belong here.
+- [TOOL_LOG.txt](TOOL_LOG.txt): canonical tool catalog and starting template
+  for the editable Arena log. Routine workspace activity must not edit it.
+- [temporary/WORKLOG.txt](temporary/WORKLOG.txt): latest persistent-memory
+  snapshot, replaced at checkpoints.
+- [products/](products/): legacy placeholder retained for older references;
+  new outputs go to `WORK/`.
 
-Workflow: **read memory → download only what is needed → use tools → save products and overwrite the memory snapshot → verify storage → remove disposable workspace copies**.
+## Standard toolbox workflow
 
-## Current status
+1. Read the handoff, worklog, toolbox index, and selected tool’s README.
+2. Download only that tool at a confirmed storage ref into a marked disposable
+   Arena workspace; do not install the whole toolbox.
+3. Run the tool headlessly, validate the output, and record actual dependency
+   and command outcomes in the local `ARENA_LOG.txt`.
+4. Copy only the finished product and compact reports to a descriptive `WORK/`
+   subdirectory. Never upload engine binaries, SDKs, caches, or credentials.
+5. Commit/push the intended files, retrieve them from GitHub to verify bytes,
+   and give the user a commit-pinned raw GitHub download URL.
+6. Delete the marked Arena workspace and downloaded tool/dependency copies only
+   after persistence is verified.
 
-Connectivity is verified and the current goals are documented. No tools are developed or installed, and no product builds have been created. See the worklog for verification results and continuation notes.
-
-When an assigned branch does not yet contain the setup, retrieve the handoff and latest memory from the latest confirmed storage ref; do not assume `main` includes unmerged work. Work only on the branch assigned to the current Arena session.
+The goal is reproducible products without treating Arena’s execution workspace
+as durable storage.

@@ -1,0 +1,140 @@
+{
+  "action": "confirm-pong",
+  "checked_at": "2026-10-10T09:58:52Z",
+  "engine": "/tmp/arena-godot-pong-proof.NI7QxB/run/godot-headless-runtime",
+  "engine_version": {
+    "command": [
+      "/tmp/arena-godot-pong-proof.NI7QxB/run/godot-headless-runtime",
+      "--version"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4.7.2.stable.custom_build\n"
+  },
+  "headless_confirmation": {
+    "command": [
+      "/tmp/arena-godot-pong-proof.NI7QxB/run/godot-headless-runtime",
+      "--headless",
+      "--path",
+      "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2",
+      "--script",
+      "res://tests/headless_confirmation.gd"
+    ],
+    "returncode": 0,
+    "stderr": "ERROR: Could not load global script cache.\n   at: get_global_class_list (core/config/project_settings.cpp:1458)\n",
+    "stdout": "Godot Engine v4.7.2.stable.custom_build - https://godotengine.org\n\nPONG_CONFIRMATION_PASS\n{\"ai_score\":2,\"ball_position\":\"(156.1157, 390.9005)\",\"ball_velocity\":\"(458.0781, 79.50266)\",\"last_event\":\"paddle_hit\",\"player_score\":0,\"rally_hits\":4}\n"
+  },
+  "non_fatal_engine_warnings": [
+    {
+      "explanation": "The compact template-debug confirmation runtime has no editor-generated global script cache. Direct-preloaded Pong scripts still ran and the engine returned zero.",
+      "match": "Could not load global script cache."
+    }
+  ],
+  "pass_marker_seen": true,
+  "project_validation": {
+    "checks": [
+      {
+        "name": "project.godot",
+        "passed": true,
+        "path": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2/project.godot"
+      },
+      {
+        "name": "export_presets.cfg",
+        "passed": true,
+        "path": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2/export_presets.cfg"
+      },
+      {
+        "name": "Pong simulation",
+        "passed": true,
+        "path": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2/scripts/pong_simulation.gd"
+      },
+      {
+        "name": "Pong scene",
+        "passed": true,
+        "path": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2/scripts/main.gd"
+      },
+      {
+        "name": "Headless confirmation",
+        "passed": true,
+        "path": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2/tests/headless_confirmation.gd"
+      },
+      {
+        "name": "Product instructions",
+        "passed": true,
+        "path": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2/README.md"
+      },
+      {
+        "expected": "run/main_scene=\"res://scripts/main.gd\"",
+        "name": "project main scene",
+        "passed": true
+      },
+      {
+        "expected": "renderer/rendering_method=\"gl_compatibility\"",
+        "name": "Compatibility renderer",
+        "passed": true
+      },
+      {
+        "expected": "viewport_width=960",
+        "name": "landscape viewport",
+        "passed": true
+      },
+      {
+        "expected": "name=\"Windows 10/11 x86_64\"",
+        "name": "Windows export preset",
+        "passed": true
+      },
+      {
+        "expected": "binary_format/architecture=\"x86_64\"",
+        "name": "Windows x86_64",
+        "passed": true
+      },
+      {
+        "expected": "name=\"Android 9+ (API 28)\"",
+        "name": "Android export preset",
+        "passed": true
+      },
+      {
+        "expected": "gradle_build/min_sdk=\"28\"",
+        "name": "Android minimum SDK 28",
+        "passed": true
+      },
+      {
+        "expected": "gradle_build/use_gradle_build=true",
+        "name": "Android Gradle export",
+        "passed": true
+      },
+      {
+        "expected": "architectures/arm64-v8a=true",
+        "name": "Android arm64",
+        "passed": true
+      },
+      {
+        "expected": "architectures/armeabi-v7a=true",
+        "name": "Android armv7",
+        "passed": true
+      }
+    ],
+    "failures": [],
+    "passed": true,
+    "project": "/tmp/arena-godot-pong-proof.NI7QxB/run/arena-pong-v0.1.2",
+    "targets": {
+      "android_9_plus": {
+        "abis": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ],
+        "min_sdk": 28,
+        "preset": "Android 9+ (API 28)",
+        "status": "configured"
+      },
+      "windows_10_11": {
+        "architecture": "x86_64",
+        "preset": "Windows 10/11 x86_64",
+        "status": "configured"
+      }
+    }
+  },
+  "status": "passed",
+  "tool": "godot-headless",
+  "tool_version": "0.1.2"
+}

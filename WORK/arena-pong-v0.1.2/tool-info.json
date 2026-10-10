@@ -1,0 +1,18 @@
+{
+  "configured_targets": {
+    "android": "Android 9+ / API 28, arm64-v8a and armeabi-v7a",
+    "windows": "Windows 10/11 x86_64"
+  },
+  "engine_bootstrap": {
+    "build_dependency": "scons==4.10.1 from pypi.org",
+    "godot_tag": "4.7.2-stable",
+    "method": "temporary Linux source build",
+    "source_host": "codeload.github.com"
+  },
+  "entry_point": "bin/godot_headless.py",
+  "headless_confirmation": "PONG_CONFIRMATION_PASS",
+  "id": "godot-headless",
+  "lifecycle": "scaffold -> confirm -> bundle/upload -> delete marked Arena workspace",
+  "runtime": "Python 3 standard library",
+  "version": "0.1.2"
+}

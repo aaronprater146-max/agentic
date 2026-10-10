@@ -1,7 +1,9 @@
-# Finished products
+# Legacy product location
 
-Reserved for finished outputs made with the tool suite. No products have been created yet.
+New Arena products are stored in [`../WORK/`](../WORK/), which contains the
+artifact, README, compact provenance, checksums, and a commit-pinned download
+link. This directory remains only for compatibility with early repository
+references; do not place new products here.
 
-Store reasonably sized deliverables here with descriptive names and enough information to retrieve and use them. Record their paths, provenance, and verification in the working Arena log and the latest `../temporary/WORKLOG.txt` snapshot.
-
-For outputs too large for the repository/platform limits, use an approved artifact or external-storage location and save the retrieval link and integrity information here instead. Never upload secrets or unnecessary private data. Verify storage before removing local originals.
+The first delivered product is
+[`../WORK/arena-pong-v0.1.2/`](../WORK/arena-pong-v0.1.2/).

@@ -1,79 +1,95 @@
 AGENTIC — LATEST PERSISTENT WORKLOG
 ====================================
 
-Last updated: 2026-10-10 (UTC)
+Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/2f5538f1-agentic
-Cold-start source: arena/f686d89f-agentic at a73e699cb3a36894ff48d6559431c0cf85d1af69
 Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-85e16d8567f6d31bf615aa740d2184ea42623905
-Current goal: handoff and cold-start context are loaded; agree on an
-implementation plan before building or installing tools.
+15f3b95 (toolbox v0.1.2 source; product upload pending this checkpoint)
+Current goal: deliver and persist the first verified Godot/Pong toolbox proof;
+then provision target export dependencies for real Windows and Android binaries.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
-- Repository: aaronprater146-max/agentic is deep storage and persistent memory
-  for Arena work. Keep the execution workspace small.
-- The tool suite must be Arena-operated and headless; it will create editable
-  visual assets and Godot products rather than a separate end-user application.
-- `TOOL_LOG.txt` is the canonical catalog/template. `ARENA_LOG.txt` is the
-  editable local working copy. Save the current working state to this file at a
-  checkpoint, never over the canonical catalog.
-- Store small finished products in `products/` with provenance and retrieval
-  instructions. Use approved artifact storage for oversized outputs.
-- Do not record credentials, commit dependencies/caches, or remove the managed
-  checkout root or `.git` directory.
+- `agentic` is durable storage for reusable headless Arena tools and finished
+  products. Arena execution state is disposable.
+- The durable toolbox is `tools/`; machine/human indexes are
+  `tools/toolbox.json` and `tools/TOOLBOX.md`.
+- A tool is fetched at a confirmed ref into a marked temporary workspace, run
+  headlessly, validated, then removed only after its product is persisted.
+- New products go in `WORK/`, not legacy `products/`. Each needs artifact,
+  README, target/build status, compact provenance, checksum, and an immutable
+  raw GitHub download URL after publication.
+- `TOOL_LOG.txt` is the canonical catalog. `ARENA_LOG.txt` is the local editable
+  copy; replace this worklog at checkpoints rather than overwriting the catalog.
+- Never commit runtimes, Android SDK/JDK files, export templates, caches,
+  `.godot` import state, signing material, or secrets.
 
-CURRENT TOOL GOALS
-------------------
-- Blender: scripted scene/asset creation, editing, rendering, and Godot-ready
-  exports with editable source retained.
-- Layered images: authored/procedural 2D artwork, masks, typography, and
-  compositing; no Stable Diffusion pipeline is planned.
-- Godot: project/source assembly, asset validation, headless checks, and
-  exportable builds.
-- Android: documented headless SDK/build path for APK/AAB output and secure
-  release-signing handling.
-- Windows packaging is optional and remains to be scoped.
+AVAILABLE TOOL
+--------------
+- `godot-headless` v0.1.2 at `tools/godot-headless/`.
+- Entry point: `python3 bin/godot_headless.py` after sparse-downloading that
+  tool into a disposable workspace.
+- Commands: `workspace-init`, `scaffold-pong`, `validate`, `bootstrap`,
+  `confirm`, `export`, `bundle`, and `cleanup-workspace`.
+- The source bootstrap builds a Linux x86_64 Godot 4.7.2 2D template-debug
+  runtime for confirmation. It disables display/rendering drivers but retains
+  project-path support. Native exports use an externally provisioned matching
+  full editor/template setup instead.
 
-TOOL AVAILABILITY AND LOCAL INSTALLATION STATE
-----------------------------------------------
-- Available reusable tools: none developed yet.
-- Installed project tools or SDKs: none.
-- Tool executions during this cold start: none.
+ACTUAL TOOL EXECUTION AND VERIFICATION
+--------------------------------------
+- Downloaded the published toolbox entry via sparse clone into an ephemeral
+  Arena workspace; the final proof used the remote `godot-headless` v0.1.2
+  source, not a repository-local execution copy.
+- Source-built the temporary runtime from Godot `4.7.2-stable` using SCons
+  `4.10.1` installed only in the disposable build workspace.
+- Source archive SHA-256:
+  `e954996374cbd1cb5d72e0e3781cc537408e6ce73b010b12c6c2f308a820690a`.
+- Built runtime reported `4.7.2.stable.custom_build`, size 63,382,592 bytes,
+  SHA-256 `37674ef71d1df4abc1d844feaf3da030781e1967d53335a68a262b93cea69f4c`.
+- Scaffolded Pong with a deterministic computer opponent, keyboard/touch
+  controls, a Compatibility-renderer project, and export presets.
+- In-engine `confirm` exited 0 and emitted `PONG_CONFIRMATION_PASS`. It tested
+  paddle collision, computer movement, scoring/reset behavior, and bounds.
+- The compact runtime logs a missing global-script-cache message because it has
+  no editor-generated cache. Tool v0.1.2 preserves raw stderr and explicitly
+  classifies this as non-fatal only with zero exit plus pass marker.
+- Python tool tests pass: 4 tests covering scaffold/validation/confirmation,
+  bundle contents, known-warning classification, failure reporting, and safe
+  cleanup-marker behavior.
 
-ACTIONS AND VERIFICATION RESULTS
---------------------------------
-- Fetched and read the latest known handoff, goals, canonical tool log, and
-  persistent worklog from `arena/f686d89f-agentic` at
-  `a73e699cb3a36894ff48d6559431c0cf85d1af69`.
-- Imported the handoff/cold-start repository layout into the assigned branch
-  without switching branches.
-- Created the git-ignored `ARENA_LOG.txt` from the canonical log and carried
-  forward the relevant decisions. No canonical tool catalog was edited.
-- Generalized branch guidance so future cold starts use the latest confirmed
-  storage ref and their assigned Arena branch rather than a stale branch name.
-- Published the initial workspace synchronization on this assigned branch and
-  retrieved `HANDOFF.md`, `GOALS.md`, `TOOL_LOG.txt`, and `temporary/WORKLOG.txt`
-  from GitHub; all four were byte-for-byte matches at the confirmed ref above.
+PRODUCT AND TARGET STATUS
+-------------------------
+- Staged product: `WORK/arena-pong-v0.1.2/`.
+- Artifact: `ArenaPong-0.1.2-source.zip`, SHA-256
+  `c36e2f1df62c5c3d16ccfa217a654f5284c25859c36f74d09119ee930abf4e3d`.
+- The ZIP contains project source, `export_presets.cfg`, the in-engine test,
+  product manifest, and confirmation report; it excludes engines and `.godot`
+  caches. Archive structure was inspected locally.
+- Windows: preset `Windows 10/11 x86_64` is configured. No `.exe` was built:
+  matching Windows export templates were not present in this Arena workspace.
+- Android: preset requires minimum SDK API 28 (Android 9+) with `arm64-v8a` and
+  `armeabi-v7a`. No APK/AAB was built: matching Android templates, Android SDK,
+  and JDK were not present. The tool's `export` command checks prerequisites;
+  it must be used with a real configured editor before claiming a mobile build.
+- No fake platform binaries were produced.
 
-PRODUCTS, CONTINUATION DATA, AND CLEANUP
------------------------------------------
-- Product builds/assets: none.
-- Persistent sources: `HANDOFF.md`, `GOALS.md`, `TOOL_LOG.txt`, and this
-  checkpoint's `temporary/WORKLOG.txt`.
-- Workspace copy retained: `ARENA_LOG.txt`, because it is the active local log.
-- Remote persistence of the initial workspace synchronization is verified at
-  `85e16d8567f6d31bf615aa740d2184ea42623905`.
-- No tool binaries, SDKs, caches, or generated intermediates were downloaded;
-  no cleanup is required.
+PUBLISHING AND CLEANUP STATUS
+-----------------------------
+- Tool source/index changes through `15f3b95` are pushed and remotely
+  retrievable. The product/docs/worklog in this checkpoint are local and await
+  commit, push, byte-level remote verification, and a commit-pinned raw link.
+- The active disposable workspace contains the downloaded tool copies, temporary
+  63 MB Godot runtime, source project/cache, and reports. It must be deleted
+  only after `WORK/` is confirmed remote. No runtime/dependency is in Git.
 
-BLOCKERS AND NEXT STEPS
------------------------
-- No implementation work is authorized by the saved goals. First agree on a
-  development plan, priorities, and a smallest end-to-end demonstration.
-- Planning must confirm dependency versions/sources, headless interfaces,
-  platform feasibility, validation criteria, storage budget, and signing
-  arrangements before tools are developed or installed.
-- At the next checkpoint, update the local working log with actual results,
-  replace this file, publish only intended files on the assigned branch, and
-  verify the remote copy before cleanup.
+NEXT STEPS
+----------
+1. Publish product, toolbox/documentation updates, and this worklog on the
+   assigned branch; retrieve remote files and fill the immutable product link.
+2. Delete the marked disposable Arena workspace and all downloaded tool copies;
+   retain only `WORK/` artifacts and canonical `tools/` source.
+3. For native target proof, obtain matching Godot export templates; for Android
+   also provision a compatible JDK/SDK in a disposable workspace, run actual
+   exports, validate outputs on target-capable infrastructure, then store only
+   those finished artifacts/reports in a new `WORK/` version directory.

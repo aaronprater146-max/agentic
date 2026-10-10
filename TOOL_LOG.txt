@@ -1,25 +1,52 @@
 AGENTIC — CANONICAL TOOL CATALOG / ARENA LOG TEMPLATE
-===================================================
+========================================================
 
-This is the repository original. During routine use, download it into the
-Arena workspace as ARENA_LOG.txt and edit only that working copy.
-Persist the working copy as temporary/WORKLOG.txt at checkpoints, not here.
-Consult HANDOFF.md and the latest saved worklog before starting.
-Catalog/source updates belong to explicitly requested tool development.
+This is the repository original. During routine work, download it into the
+Arena workspace as `ARENA_LOG.txt` and edit only that working copy. Persist the
+current working context to `temporary/WORKLOG.txt` at checkpoints—not here.
+Consult `HANDOFF.md`, the latest saved worklog, and the selected toolbox entry
+before starting.
 
 AVAILABLE REUSABLE TOOLS
------------------------
-None yet. Current scope is connectivity and persistent-memory setup only.
-No tool entry points exist; do not invent commands or install tools now.
+------------------------
 
-When a tool is developed, its catalog entry should include:
-- Name, purpose, and repository path/version.
-- Headless entry point and exact usage examples.
-- Required dependencies, inputs, and expected outputs.
-- Limitations, verification steps, and local cleanup instructions.
+### `godot-headless` v0.1.2
+
+- **Purpose:** Headless Godot 4.7 workflow for a Pong proof project: scaffold,
+  static target validation, temporary Linux confirmation runtime bootstrap,
+  in-engine GDScript confirmation, target-aware export invocation, source
+  bundle, and safe ephemeral-workspace cleanup.
+- **Canonical source:** `tools/godot-headless/`
+- **Catalog metadata:** `tools/godot-headless/TOOL.json`
+- **Instructions:** `tools/godot-headless/README.md`
+- **Headless entry point:**
+  `python3 godot_headless.py <command>` after downloading the tool into a
+  disposable workspace. Run `tool-info` for machine-readable metadata.
+- **Inputs:** an output workspace/project path; a compatible Godot binary for
+  `confirm`; matching export templates for `export`; Android additionally needs
+  a configured SDK/JDK. The source bootstrap is Linux x86_64 only.
+- **Outputs:** a Pong project, JSON validation/confirmation/export reports, and
+  a compact source ZIP. New finished products belong in `WORK/<product>/`.
+- **Configured targets:** Windows 10/11 x86_64; Android 9+ / min API 28 with
+  `arm64-v8a` and `armeabi-v7a`.
+- **Verification:** `confirm` must exit zero and record
+  `PONG_CONFIRMATION_PASS`; inspect the JSON report. The compact template-debug
+  runtime may record the known non-fatal global-script-cache warning.
+- **Limitations:** target presets are not native binaries. Do not claim a
+  `.exe`, APK, or AAB without an actual exported file and successful report.
+  The current first product is a headless-verified source ZIP, not a native
+  export.
+- **Cleanup:** use `workspace-init` before work; after product upload and remote
+  verification, use `cleanup-workspace` and remove the downloaded tool copy.
+  Never commit the temporary Godot binary, source-build cache, SDK/JDK, export
+  templates, `.godot` cache, or signing material.
+
+Tool source/catalog updates are deliberate development work. Add a comparable
+entry only after documenting its exact headless usage, dependencies, validation,
+outputs, limitations, and cleanup behavior.
 
 WORKING LOG — FILL IN THE DOWNLOADED COPY ONLY
---------------------------------------------
+-----------------------------------------------
 Last updated (include timezone):
 Session / assigned branch:
 Latest confirmed remote storage ref or commit:

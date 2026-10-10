@@ -2,69 +2,141 @@
 
 ## Purpose
 
-`aaronprater146-max/agentic` is this project's **deep-storage repository** and persistent memory for work done in Arena. It will hold reusable headless tools, compact project context, and finished products. Arena is a small, disposable execution workspace, not the permanent home of those assets.
+`aaronprater146-max/agentic` is this project's **deep-storage repository** and
+persistent memory for Arena work. It stores reusable headless tool source,
+compact project context, and finished products. Arena is a disposable execution
+workspace—not the permanent home of engines, SDKs, dependency caches, or
+intermediate output.
 
-**Current scope: goals and documentation only; connectivity is verified.** Read [GOALS.md](GOALS.md) for the intended Blender, layered-image, Godot, Android, and optional Windows capabilities. The user wants an implementation plan next, not tool development yet. No tools have been developed or installed. Do not build or install tools until the user requests them.
+**Current implementation:** the first tool,
+[`tools/godot-headless/`](tools/godot-headless/), is available. It produces and
+confirms a simple Pong proof project inside Godot headlessly. The verified
+source product is in [`WORK/arena-pong-v0.1.2/`](WORK/arena-pong-v0.1.2/).
+Windows 10/11 and Android 9+ export presets are configured, but no native
+binary has been claimed unless its product directory includes a successful
+export report.
 
 ## Repository layout
 
 | Path | Role |
 | --- | --- |
-| `HANDOFF.md` | Read first: how an agent should use this repository. |
-| `GOALS.md` | Current creative/build goals; planning comes before implementation. |
-| `TOOL_LOG.txt` | Canonical tool catalog and starting template for the editable Arena log. Routine workspace activity must not edit this original. |
-| `temporary/WORKLOG.txt` | Latest persistent-memory snapshot. Replace its contents at checkpoints; do not create a new worklog per chat. |
-| `temporary/` | Other small, necessary continuation data. Despite its name, committed data here is persistent. |
-| `tools/` | Reusable headless tool source and usage instructions, to be developed later. |
-| `products/` | Finished outputs and the information needed to find and use them. |
+| `HANDOFF.md` | Read first: lifecycle and safety rules for agents. |
+| `GOALS.md` | Creative/build goals, delivered scope, and remaining work. |
+| `tools/TOOLBOX.md` | Human-readable index of reusable ephemeral tools. |
+| `tools/toolbox.json` | Machine-readable toolbox index. |
+| `tools/<tool>/` | Reusable source, metadata, tests, template, and usage guide for one tool. |
+| `WORK/` | New finished products, compact reports, checksums, and download information. |
+| `products/` | Legacy placeholder; do not use it for new products. |
+| `TOOL_LOG.txt` | Canonical catalog/template. Do not edit it during routine execution. |
+| `temporary/WORKLOG.txt` | Latest compact persistent-memory snapshot. Replace at checkpoints. |
+| `temporary/` | Other small, necessary continuation data. It is persisted despite its name. |
 
 ## Cold start (start of a chat)
 
-1. Read this handoff from the latest saved storage ref, then read `GOALS.md`, `temporary/WORKLOG.txt`, and `TOOL_LOG.txt`.
-2. Download `TOOL_LOG.txt` into the Arena workspace as **`ARENA_LOG.txt`**. This is the working copy: the chat edits it to record tool availability, local installs, usage, outcomes, product locations, and continuation notes.
-3. Bring relevant context from the saved worklog into the working copy. Preserve useful decisions and unfinished work, but do not treat a previous chat's installed-tool list as proof that those tools are installed now. Check the actual workspace.
-4. Retrieve only the tools, inputs, and dependencies needed for the requested outcome. Prefer individual-file downloads over bringing all deep storage into Arena. Do not install the entire tool suite by default.
-5. If no tools are needed, keep the workspace minimal and do not install any.
+1. Read this handoff from the latest confirmed storage ref, then read
+   `GOALS.md`, `temporary/WORKLOG.txt`, `TOOL_LOG.txt`, and the relevant toolbox
+   entry.
+2. Copy `TOOL_LOG.txt` into the Arena workspace as **`ARENA_LOG.txt`**. This is
+   the editable working copy that records actual installs, commands, results,
+   product locations, and cleanup.
+3. Carry relevant decisions and unfinished work from the saved worklog into the
+   working context. Do **not** treat an old installed-tool list as proof that a
+   tool exists in this fresh workspace.
+4. Select only the tool required for the user’s outcome. Read its `README.md`
+   and `TOOL.json`, then download it at the confirmed ref into a marked
+   disposable workspace. Prefer a sparse clone or individual-file retrieval;
+   do not download/install all tools by default.
+5. If no tool is needed, keep the workspace minimal. If a requested tool does
+   not exist, develop it deliberately in `tools/` with tests and documentation
+   rather than inventing a command.
 
-If running inside the existing managed Git checkout, use it for uploads rather than making another clone. Keep transient installations outside tracked storage paths. A downloaded copy of a repository file is not automatically a change to its canonical source.
+If running in the managed Git checkout, use it for repository edits/uploads.
+Keep an execution copy of the downloaded tool and its runtime outside tracked
+paths. A downloaded tool copy is not itself a canonical source edit.
+
+## Toolbox lifecycle
+
+Every reusable tool must document its exact headless entry point, inputs,
+outputs, validation, platform constraints, dependency source/version, failure
+modes, and cleanup. A normal run is:
+
+1. **Download:** fetch one tool from `tools/` at a known ref into a disposable
+   Arena workspace.
+2. **Run:** acquire only its required runtime/dependencies in that workspace;
+   do not commit them. Preserve enough source/parameters/logs to reproduce the
+   product.
+3. **Validate:** use the tool’s confirmation/test path and inspect actual
+   output. Do not call a configured target a successful binary export without
+   an artifact and validation report.
+4. **Store:** copy the finished artifact, README, checksums, and compact
+   provenance to a descriptive `WORK/<product>/` path.
+5. **Publish/link:** commit and push intended storage files, retrieve them from
+   GitHub to verify bytes, then provide a direct raw GitHub URL pinned to the
+   product commit.
+6. **Clean:** only after storage verification, delete the downloaded tool,
+   runtime, SDKs, cache, scratch project, and other disposable files from the
+   Arena workspace. Never delete canonical `tools/`, `WORK/`, checkout root, or
+   `.git`.
 
 ## During work
 
-- Run tools headlessly where possible. Follow each tool's documented entry point, inputs, outputs, and dependencies; never invent a command for a tool that has not been built.
-- Edit the local `ARENA_LOG.txt`, **not** the original `TOOL_LOG.txt` in the repository.
-- Record what was installed, where it came from, how it was used, and whether it has since been removed. Include artifact paths, useful decisions, errors, and the next action.
-- Do not record passwords, tokens, private keys, or unnecessary personal data. Use existing authenticated Git/GitHub access; never put credentials in logs.
-- Changes to the canonical catalog or reusable tool source are deliberate development work, not a side effect of using a tool. Make them only when requested.
+- Run tools headlessly where possible. Follow the documented entry point; do
+  not invent commands for tools that do not exist.
+- Edit local `ARENA_LOG.txt`, **not** `TOOL_LOG.txt`.
+- Record what was installed, where it came from, exact version/hash where
+  useful, commands run, outcomes, artifacts, failures, and next steps.
+- Never record passwords, tokens, private keys, Android keystores, aliases, or
+  signing passwords. Use existing authenticated Git/GitHub access only.
+- Changes to toolbox source/catalog are deliberate development work. Add tests
+  and update index metadata when a tool changes.
+- Treat target configuration and target export separately. For example, a Pong
+  project may be configured for Android API 28 while an APK still cannot be
+  claimed until matching templates, SDK/JDK, and an actual export are present.
 
-## Save, then clean up
+## Save, link, then clean up
 
 At a checkpoint and before ending a chat:
 
-1. Upload finished products to `products/` and the small continuation files needed by the next chat to `temporary/`. Give products descriptive names and retain their usage/provenance information.
-2. Update the working `ARENA_LOG.txt` with actual outcomes, storage paths, active blockers, and exact next steps.
-3. Copy the working log to **`temporary/WORKLOG.txt`**, replacing the current snapshot. Do not copy it over `TOOL_LOG.txt`. The latest worklog is compact current memory; Git history retains prior committed snapshots.
-4. Review the diff, stage only intended storage changes, and publish them using Git on the branch assigned by the environment. Verify the remote commit/files before treating the save as complete. If publishing fails, retain the local files and report that remote persistence is not confirmed.
-5. Only after the required files are safely stored and retrievable, remove downloaded tool copies, installed tool dependencies, scratch inputs, and generated intermediates from the Arena workspace when they are no longer needed. Record the cleanup and publish the updated worklog if it changes.
+1. Upload products and their compact reports to `WORK/`, with descriptive
+   filenames, usage instructions, limitations, hashes, and target status.
+2. Update `ARENA_LOG.txt` with actual outcomes and cleanup status. Replace
+   `temporary/WORKLOG.txt` from that context; never overwrite `TOOL_LOG.txt`.
+3. Review the diff and stage only intended canonical source, product, and
+   continuation changes. Publish them on the branch assigned by the
+   environment.
+4. Verify remote persistence by checking the pushed ref and retrieving the
+   stored files. Create the user-facing raw GitHub download link from that
+   immutable product commit.
+5. Delete only ephemeral workspace copies after verification. Record what was
+   removed and what remains in storage.
 
-Delete workspace copies, **not** the reusable tools, stored products, or persistent memory in this repository. Never delete the managed checkout root or its `.git` directory. Avoid removing an output that still needs to remain available to the user in the current chat.
+## Keep storage secure and small
 
-## Keep storage and workspace small
-
-- Do not commit virtual environments, `node_modules`, caches, secrets, or dependency downloads. Store tool source and dependency manifests instead.
-- Keep `temporary/WORKLOG.txt` concise: current context and next steps, not a transcript of every chat.
-- Store only continuation data worth carrying forward. Remove superseded temporary data deliberately, without deleting the current snapshot.
-- For a product too large for the repository/platform limits, use an approved artifact or external-storage location and record its retrieval link and integrity information here. Do not silently commit large datasets or binaries.
+- Do not commit virtual environments, `node_modules`, caches, installed Godot
+  runtimes, Android SDK/JDK files, export templates, source-build object files,
+  `.godot` import caches, secrets, or signing material.
+- Keep `temporary/WORKLOG.txt` concise: current context and exact next steps,
+  not a chat transcript.
+- Keep product directories self-explanatory. For oversized artifacts, use
+  approved external storage and commit the retrieval URL plus integrity data;
+  do not silently upload huge binaries.
+- Do not remove a user-visible artifact that must remain available in the
+  current chat.
 
 ## Connectivity and branch rules
 
 - Repository: `https://github.com/aaronprater146-max/agentic`.
-- At cold start, use the latest confirmed storage ref named in the saved worklog. Do not assume the default branch has unmerged handoff or memory files.
-- Always work on the branch assigned to the current Arena session. Determine it with `git branch --show-current`; do not switch branches, create another working branch, or push elsewhere.
-- Use `git` for status, diffs, commits, and pushes; use `gh` for GitHub operations and individual-file retrieval. No credential sharing in chat is needed.
-- A local edit alone does not prove remote persistence. The worklog must distinguish local checks from a confirmed GitHub upload/download.
-- Resolve divergent snapshots before overwriting them; do not force-push or blindly replace another chat's newer memory. If a session branch is not merged, state where its latest snapshot lives so a later chat can retrieve it.
+- At cold start, use the latest confirmed storage ref named in the saved
+  worklog. Do not assume the default branch includes unmerged handoff/memory.
+- Always work on the current Arena session branch. Determine it with
+  `git branch --show-current`; do not switch branches or push to another one.
+- Use `git` for status, diffs, commits, and pushes; use `gh` for GitHub
+  operations and individual-file retrieval. Do not exchange credentials in
+  chat or logs.
+- A local edit alone does not prove persistence. Resolve divergent snapshots
+  rather than force-pushing or blindly replacing a newer worklog.
 
-Example: download just the handoff without cloning the repository (run from a scratch/workspace directory, not over the canonical tracked file):
+Example, retrieve one handoff file without cloning over a tracked copy:
 
 ```sh
 storage_ref='your-latest-confirmed-storage-ref'
@@ -73,8 +145,10 @@ gh api -H 'Accept: application/vnd.github.raw+json' \
   > HANDOFF.md
 ```
 
-Use the same retrieval pattern for `TOOL_LOG.txt`, saving it locally as `ARENA_LOG.txt`, and for `temporary/WORKLOG.txt`. Substitute the latest confirmed storage ref when appropriate.
+## Finish each chat with clear status
 
-## Finish each chat with a clear status
-
-Tell the user what was produced, where it is stored, whether remote persistence was verified, and what was removed from Arena. Leave enough memory for another chat to continue without guessing. Do not claim that tools were installed, products were created, or data was saved unless those actions actually succeeded.
+Tell the user what was produced, where it is stored, whether remote persistence
+was verified, the direct download link (if a product was made), what target
+artifacts were or were not actually built, and what temporary workspace state
+was removed. Do not claim tools were installed, targets exported, or products
+saved unless those actions succeeded.
