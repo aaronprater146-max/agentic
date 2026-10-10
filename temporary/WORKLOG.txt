@@ -1,72 +1,82 @@
 AGENTIC — LATEST PERSISTENT WORKLOG
 ==================================
 
-Last updated: 2026-10-10 (America/New_York; setup date)
+Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/f686d89f-agentic
 Latest confirmed remote storage ref: arena/f686d89f-agentic (use latest commit)
-Initial upload/download verification commit:
-  576c89116a7ee7ef52843784b90a9470bd742a2e
-Current goal: connectivity complete; await a later tool-development request.
+Goals document upload/download verified at:
+  090a711a81923bf536cff11f42d2ad2d139f7ff1
+Current goal: current goals documented; agree on an implementation plan next.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
 - Repository: aaronprater146-max/agentic.
-- This is the project's deep-storage repository and persistent memory.
-- Arena is a small execution workspace. Download only the tools needed for
-  a requested outcome; save results, then remove disposable local tool
-  copies and dependencies after storage is verified.
-- The future tools are a reusable headless suite for high-quality products.
-- The repo's TOOL_LOG.txt is a canonical catalog/template, not the running
-  workspace log. Download it as ARENA_LOG.txt and edit the local copy.
-- At checkpoints, upload small continuation data to temporary/ and replace
-  temporary/WORKLOG.txt with the latest working log. Preserve the original
-  TOOL_LOG.txt during routine use.
-- Store finished products in products/ and record their paths and usage.
-- HANDOFF.md explains the complete lifecycle for later agents.
-- The user explicitly deferred tool development: connectivity only now.
+- This is deep storage and persistent memory for high-quality Arena products.
+- Tools are headless and operated by Arena agents, not a separate end-user
+  tool application. No interactive editor GUI should be required.
+- Keep Arena small: retrieve only what is needed, save and verify results,
+  then remove disposable local tool installations and intermediates.
+- TOOL_LOG.txt is the canonical catalog/template. Download it locally as
+  ARENA_LOG.txt, edit that copy, and preserve the repository original.
+- At checkpoints, save small continuation data in temporary/ and replace
+  temporary/WORKLOG.txt with the latest working log.
+- Store reasonably sized products in products/; use approved artifact
+  storage for oversized outputs and record their retrieval information.
+- HANDOFF.md explains the lifecycle. GOALS.md records the current vision.
+
+CURRENT TOOL GOALS
+-------------------
+- Blender: scripted asset/scene creation, editing, rendering, and assets
+  suitable for Godot, retaining editable source.
+- Layered images: editable 2D artwork, masks, typography, compositing, and
+  exports. Create images through authored/procedural graphics and Blender
+  renders instead of Stable Diffusion; no diffusion pipeline is planned.
+- Godot: project/scene/resource workflows, asset import and validation,
+  headless checks, compatible export templates, and target builds.
+- Android: SDK command-line components and required build environment,
+  repeatable APK/AAB production, validation, and secure release signing.
+- Windows: possible .exe creation/packaging, including Godot exports.
+  Optional; exact scope and host-platform constraints remain undecided.
+- This request was goals documentation only. The user wants a plan next,
+  then development later; do not start implementation or install tools yet.
 
 TOOL AVAILABILITY AND LOCAL INSTALLATION STATE
 ----------------------------------------------
 Available tools: none developed yet.
 Installed project tools: none.
-Tool executions: none.
-Tool cleanup required: none.
+Tool executions: none. No tool or SDK dependencies were downloaded.
 
 ACTIONS AND VERIFICATION RESULTS
 --------------------------------
-- Created and deleted a temporary file in the managed checkout; confirmed
-  both operations succeeded and left no test file behind.
-- GitHub repository lookup succeeded; authenticated access is available.
-- Inspected the repository: it initially contained only README.md.
-- Added HANDOFF.md, AGENTS.md, the canonical TOOL_LOG.txt, storage-directory
-  documentation, a current memory snapshot, and workspace/cache ignores.
-- Published the setup to GitHub on arena/f686d89f-agentic and confirmed that
-  the remote branch pointed to the uploaded commit.
-- Downloaded HANDOFF.md, TOOL_LOG.txt, temporary/WORKLOG.txt, and README.md
-  from GitHub into a scratch directory; all matched local bytes exactly.
-- Deleted the downloaded verification copies after comparison.
-- Checked ignore rules: disposable workspace state is ignored, while the
-  canonical template, persistent snapshot, and product paths are trackable.
-- Remote deletion of a committed file was not tested; the deletion check
-  above was local. GitHub write/upload and read/download were verified.
+- Prior connectivity checks verified local file creation/deletion and
+  GitHub upload/download. Remote deletion of a committed file was not tested.
+- Added polished GOALS.md covering the requested creative/build goals,
+  desired outcomes, headless/storage requirements, and optional Windows scope.
+- Linked the goals from README.md and added them to HANDOFF.md's startup
+  reading instructions. No implementation plan or tool code was added.
+- Checked document links, goal coverage, clean diffs, and branch alignment.
+- Published GOALS.md, README.md, and HANDOFF.md to the session branch;
+  downloaded all three from GitHub and confirmed exact local/remote matches.
+- Downloaded the canonical TOOL_LOG.txt as the git-ignored ARENA_LOG.txt,
+  then updated this working copy using the saved context and current goals.
+- The repository's original TOOL_LOG.txt remains unchanged.
 
-PRODUCTS AND CONTINUATION DATA
-------------------------------
-Products: none; only connectivity and storage documentation was requested.
-Continuation snapshot: temporary/WORKLOG.txt (this file).
-Canonical instructions: HANDOFF.md.
-Canonical tool catalog/template: TOOL_LOG.txt (unchanged by routine logging).
-Initial storage branch: arena/f686d89f-agentic; not merged into main.
-
-CLEANUP
---------
-The local connectivity-test file and scratch download copies were deleted.
-No tools or dependencies were installed. Keep the managed checkout and its
-.git directory intact; it is storage, not a disposable tool installation.
+PRODUCTS, CONTINUATION DATA, AND CLEANUP
+---------------------------------------
+Product builds/assets: none; this was a documentation-only update.
+Current goals: GOALS.md. Canonical agent instructions: HANDOFF.md.
+Persistent snapshot: temporary/WORKLOG.txt (replaced from the working log).
+Local ARENA_LOG.txt is retained for ongoing workspace logging and ignored
+by Git. No installed tools, SDKs, or bulky execution state need cleanup.
+Storage branch: arena/f686d89f-agentic; not merged into main.
 
 BLOCKERS AND NEXT STEPS
 -----------------------
-- Connectivity is confirmed; no current setup blockers.
-- Leave tool development for a later user request.
-- Future chats must retrieve the latest confirmed handoff and snapshot;
-  until merged, these setup files live on arena/f686d89f-agentic, not main.
+- Goals documentation is saved and remotely verified; no current blockers.
+- Next: agree on a development plan, priorities, and a first end-to-end demo.
+- During planning, confirm dependency choices/versions, reachable download
+  sources, headless interfaces, platform feasibility, output validation,
+  storage budgets, and signing requirements. Do not assume builds work yet.
+- Keep Windows executable support optional until its scope is agreed.
+- Future chats must read GOALS.md and the latest worklog from the confirmed
+  storage branch; do not assume main contains these files before merging.
