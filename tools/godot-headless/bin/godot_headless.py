@@ -30,10 +30,20 @@ from typing import Any, Iterable
 
 
 TOOL_ID = "godot-headless"
-TOOL_VERSION = "0.1.1"
+TOOL_VERSION = "0.1.2"
 GODOT_TAG_DEFAULT = "4.7.2-stable"
 SCONS_VERSION = "4.10.1"
 PASS_MARKER = "PONG_CONFIRMATION_PASS"
+# A template-debug runtime has no editor-generated global class cache. Godot
+# writes this message at error level even when direct-preloaded scripts run
+# successfully, so retain it in the raw stderr and label it explicitly.
+KNOWN_NON_FATAL_STDERR = {
+    "Could not load global script cache.": (
+        "The compact template-debug confirmation runtime has no editor-generated "
+        "global script cache. Direct-preloaded Pong scripts still ran and the "
+        "engine returned zero."
+    ),
+}
 SENTINEL_NAME = ".arena-toolbox-ephemeral.json"
 TOOL_ROOT = Path(__file__).resolve().parents[1]
 PONG_TEMPLATE = TOOL_ROOT / "templates" / "pong"
@@ -253,6 +263,13 @@ def command_confirm(args: argparse.Namespace) -> int:
         payload["headless_confirmation"] = test_result
         marker_seen = PASS_MARKER in test_result["stdout"]
         payload["pass_marker_seen"] = marker_seen
+        non_fatal_warnings = [
+            {"match": marker, "explanation": explanation}
+            for marker, explanation in KNOWN_NON_FATAL_STDERR.items()
+            if marker in test_result["stderr"]
+        ]
+        if non_fatal_warnings:
+            payload["non_fatal_engine_warnings"] = non_fatal_warnings
         if test_result["returncode"] != 0:
             raise ToolError("Godot headless confirmation exited non-zero. See the confirmation report for output.")
         if not marker_seen:

@@ -93,6 +93,11 @@ A successful `confirm` command exits with status 0 and records
 computer movement, scoring/reset behavior, and paddle bounds. It is more than a
 file-existence check: Godot loads and runs the project’s GDScript headlessly.
 
+The compact template-debug runtime may write `Could not load global script
+cache.` to stderr because it deliberately has no editor-generated import cache.
+The confirmation report retains that raw stderr and labels it as a known
+non-fatal warning only when Godot exits zero and emits the pass marker.
+
 ## Configured product compatibility
 
 The Pong template uses Godot's Compatibility renderer and has these export

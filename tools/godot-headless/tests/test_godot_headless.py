@@ -96,6 +96,38 @@ class GodotHeadlessToolTests(unittest.TestCase):
             self.run_tool("cleanup-workspace", "--path", str(workspace))
             self.assertFalse(workspace.exists())
 
+    def test_known_global_cache_warning_is_recorded_as_non_fatal(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            project = root / "arena-pong"
+            self.run_tool("scaffold-pong", "--output", str(project))
+            engine = root / "global-cache-warning.py"
+            engine.write_text(
+                "#!/usr/bin/env python3\n"
+                "import sys\n"
+                "if '--version' in sys.argv:\n"
+                "    print('4.7.2-test-headless')\n"
+                "else:\n"
+                "    print('PONG_CONFIRMATION_PASS')\n"
+                "    print('ERROR: Could not load global script cache.', file=sys.stderr)\n",
+                encoding="utf-8",
+            )
+            engine.chmod(engine.stat().st_mode | stat.S_IXUSR)
+            report = root / "warning-confirmation.json"
+            self.run_tool(
+                "confirm",
+                "--godot",
+                str(engine),
+                "--project",
+                str(project),
+                "--report",
+                str(report),
+            )
+            payload = json.loads(report.read_text(encoding="utf-8"))
+            self.assertEqual(payload["status"], "passed")
+            self.assertTrue(payload["non_fatal_engine_warnings"])
+            self.assertIn("global script cache", payload["non_fatal_engine_warnings"][0]["explanation"])
+
     def test_confirmation_failure_creates_report(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

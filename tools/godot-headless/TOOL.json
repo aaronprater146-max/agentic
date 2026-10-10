@@ -1,6 +1,6 @@
 {
   "id": "godot-headless",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "Headless Godot 4.7 workflow",
   "entry_point": "bin/godot_headless.py",
   "runtime": {
