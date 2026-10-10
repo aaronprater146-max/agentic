@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "title": "Arena ephemeral tool toolbox",
+  "workflow": [
+    "download one tool from tools/ at a confirmed repository ref",
+    "use it in a marked disposable Arena workspace",
+    "upload the verified product and compact reports to WORK/",
+    "give the user a raw GitHub URL pinned to the product commit",
+    "delete the downloaded tool and temporary dependencies from Arena"
+  ],
+  "tools": [
+    {
+      "id": "godot-headless",
+      "version": "0.1.0",
+      "path": "tools/godot-headless",
+      "metadata": "tools/godot-headless/TOOL.json",
+      "readme": "tools/godot-headless/README.md",
+      "entry_point": "tools/godot-headless/bin/godot_headless.py",
+      "ephemeral": true,
+      "product_destination": "WORK/",
+      "confirmation_marker": "PONG_CONFIRMATION_PASS",
+      "configured_targets": {
+        "android": "Android 9+ / API 28, arm64-v8a and armeabi-v7a",
+        "windows": "Windows 10/11 x86_64"
+      }
+    }
+  ]
+}
