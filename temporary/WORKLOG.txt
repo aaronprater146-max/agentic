@@ -3,8 +3,10 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 
 Last updated: 2026-10-10 (America/New_York; setup date)
 Session / assigned branch: arena/f686d89f-agentic
-Latest confirmed remote storage ref or commit: pending initial publication
-Current goal: establish connectivity, storage conventions, and agent handoff.
+Latest confirmed remote storage ref: arena/f686d89f-agentic (use latest commit)
+Initial upload/download verification commit:
+  576c89116a7ee7ef52843784b90a9470bd742a2e
+Current goal: connectivity complete; await a later tool-development request.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
@@ -38,7 +40,15 @@ ACTIONS AND VERIFICATION RESULTS
 - Inspected the repository: it initially contained only README.md.
 - Added HANDOFF.md, AGENTS.md, the canonical TOOL_LOG.txt, storage-directory
   documentation, a current memory snapshot, and workspace/cache ignores.
-- GitHub upload/download of this setup: pending; not yet claimed verified.
+- Published the setup to GitHub on arena/f686d89f-agentic and confirmed that
+  the remote branch pointed to the uploaded commit.
+- Downloaded HANDOFF.md, TOOL_LOG.txt, temporary/WORKLOG.txt, and README.md
+  from GitHub into a scratch directory; all matched local bytes exactly.
+- Deleted the downloaded verification copies after comparison.
+- Checked ignore rules: disposable workspace state is ignored, while the
+  canonical template, persistent snapshot, and product paths are trackable.
+- Remote deletion of a committed file was not tested; the deletion check
+  above was local. GitHub write/upload and read/download were verified.
 
 PRODUCTS AND CONTINUATION DATA
 ------------------------------
@@ -50,12 +60,13 @@ Initial storage branch: arena/f686d89f-agentic; not merged into main.
 
 CLEANUP
 --------
-The local connectivity-test file was deleted. No tools or dependencies were
-installed. Keep the managed checkout and its .git directory intact.
+The local connectivity-test file and scratch download copies were deleted.
+No tools or dependencies were installed. Keep the managed checkout and its
+.git directory intact; it is storage, not a disposable tool installation.
 
 BLOCKERS AND NEXT STEPS
 -----------------------
-- Verify publication to GitHub and retrieval of the saved files.
+- Connectivity is confirmed; no current setup blockers.
 - Leave tool development for a later user request.
 - Future chats must retrieve the latest confirmed handoff and snapshot;
   until merged, these setup files live on arena/f686d89f-agentic, not main.
