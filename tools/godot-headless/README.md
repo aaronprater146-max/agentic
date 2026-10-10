@@ -60,10 +60,11 @@ The source fallback is intentionally used for **headless confirmation**, not as
 a replacement for official export templates. It downloads the pinned Godot
 source tag from `codeload.github.com`, installs the pinned SCons build helper
 from `pypi.org`, builds a Linux x86_64 2D headless confirmation runtime with
-rendering drivers disabled, and writes it to the disposable workspace. The Pong
-confirmation exercises the pure simulation through GDScript, so no display driver
-is needed. It is intentionally not used for platform exports; use a matching full
-Godot editor plus export templates for that step.
+rendering drivers disabled and project-path overrides retained, then writes it
+to the disposable workspace. The Pong confirmation exercises the pure simulation
+through GDScript, so no display driver is needed. It is intentionally not used
+for platform exports; use a matching full Godot editor plus export templates for
+that step.
 
 ```sh
 set -eu

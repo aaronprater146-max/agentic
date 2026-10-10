@@ -504,6 +504,7 @@ def command_bootstrap(args: argparse.Namespace) -> int:
             "use_sowrap=no",
             "lto=none",
             "debug_symbols=no",
+            "disable_path_overrides=no",
             f"-j{args.jobs}",
         ]
         print("Building a temporary 2D headless Godot runtime from source; this can take several minutes…", flush=True)
