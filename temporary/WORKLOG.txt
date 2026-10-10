@@ -4,9 +4,9 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/2f5538f1-agentic
 Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92
-Current goal: first verified Godot/Pong toolbox proof is remotely stored;
-next provision target export dependencies for real Windows and Android binaries.
+47b9cd44f177a6bdfcc6d1dc185ed244803471c6
+Current goal: first verified Godot/Pong toolbox proof is remotely stored and
+Arena cleanup is complete; next provision target dependencies for native exports.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
@@ -83,17 +83,19 @@ PUBLISHING AND CLEANUP STATUS
   `a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92`. GitHub raw retrieval confirmed
   byte matches for the source ZIP, checksum manifest, reports, tool entry point,
   toolbox index, handoff, and worklog.
-- This follow-up snapshot adds the immutable link and final cleanup state; push
-  and retrieve it before treating that metadata update as persisted.
-- The active disposable workspace still contains downloaded tool copies, the
-  temporary 63 MB Godot runtime, source projects/caches, and scratch reports.
-  No runtime/dependency is in Git; remove this workspace after the final
-  metadata push is verified.
+- The immutable product-link/worklog update was then pushed at
+  `47b9cd44f177a6bdfcc6d1dc185ed244803471c6` and remotely byte-verified,
+  including `DOWNLOAD_URL.txt`, product README, product ZIP, confirmation,
+  handoff, and tool source.
+- Cleanup completed after that verification: the marked Arena workspace,
+  downloaded tool copies, temporary 63 MB Godot runtime, source/build caches,
+  scratch projects, and local reports were removed. No Godot/SCons process is
+  active; no runtime/dependency is in Git.
 
 NEXT STEPS
 ----------
-1. Publish this final link/worklog update, verify it remotely, then delete the
-   marked disposable Arena workspace and all downloaded tool copies.
+1. Publish this compact cleanup snapshot and retrieve it once; no Arena tool
+   installation remains to clean from this proof run.
 2. For native target proof, obtain matching Godot export templates; for Android
    also provision a compatible JDK/SDK in a disposable workspace, run actual
    exports, validate outputs on target-capable infrastructure, then store only
