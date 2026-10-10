@@ -407,12 +407,13 @@ def download_file(url: str, destination: Path) -> None:
 
 
 def command_bootstrap(args: argparse.Namespace) -> int:
-    """Build a temporary Linux headless editor from the pinned upstream source tag.
+    """Build a temporary Linux headless confirmation runtime from pinned source.
 
     Release assets redirect through a host intentionally unavailable in some Arena
     environments. The source fallback only uses codeload.github.com and pypi.org,
     which makes the proof workflow repeatable here as well as in a standard Arena
-    sandbox.
+    sandbox. It builds Godot's smaller 2D template-debug runtime; use a matching
+    full editor plus export templates for Windows or Android packaging.
     """
     if platform.system() != "Linux" or platform.machine().lower() not in {"x86_64", "amd64"}:
         raise ToolError("The source bootstrap currently supports Linux x86_64 Arena workers only. Supply a compatible Godot editor with --godot on other hosts.")
@@ -486,8 +487,9 @@ def command_bootstrap(args: argparse.Namespace) -> int:
             "-m",
             "SCons",
             "platform=linuxbsd",
-            "target=editor",
+            "target=template_debug",
             "headless=yes",
+            "disable_3d=yes",
             "x11=no",
             "wayland=no",
             "alsa=no",
@@ -502,7 +504,7 @@ def command_bootstrap(args: argparse.Namespace) -> int:
             "debug_symbols=no",
             f"-j{args.jobs}",
         ]
-        print("Building a temporary headless Godot editor from source; this can take several minutes…", flush=True)
+        print("Building a temporary 2D headless Godot runtime from source; this can take several minutes…", flush=True)
         with build_log.open("w", encoding="utf-8") as log:
             completed = subprocess.run(
                 build_command,
@@ -520,9 +522,9 @@ def command_bootstrap(args: argparse.Namespace) -> int:
             payload["build_log_tail"] = build_log.read_text(encoding="utf-8", errors="replace")[-12000:]
             raise ToolError(f"Godot source build failed with exit code {completed.returncode}. See {build_log}.")
 
-        candidates = sorted((source_dir / "bin").glob("godot.linuxbsd.editor*.x86_64"), key=lambda candidate: candidate.stat().st_size, reverse=True)
+        candidates = sorted((source_dir / "bin").glob("godot.linuxbsd.template_debug*.x86_64"), key=lambda candidate: candidate.stat().st_size, reverse=True)
         if not candidates:
-            raise ToolError("Godot built successfully but no Linux x86_64 editor binary was found.")
+            raise ToolError("Godot built successfully but no Linux x86_64 headless runtime binary was found.")
         built_engine = candidates[0]
         shutil.copy2(built_engine, destination)
         destination.chmod(destination.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
@@ -647,7 +649,7 @@ def build_parser() -> argparse.ArgumentParser:
     bundle.add_argument("--force", action="store_true", help="Replace an existing ZIP.")
     bundle.set_defaults(handler=command_bundle)
 
-    bootstrap = subcommands.add_parser("bootstrap", help="Build a temporary headless Godot editor from pinned upstream source.")
+    bootstrap = subcommands.add_parser("bootstrap", help="Build a temporary headless Godot confirmation runtime from pinned upstream source.")
     bootstrap.add_argument("--destination", required=True, help="Path for the temporary resulting Godot binary.")
     bootstrap.add_argument("--godot-tag", default=GODOT_TAG_DEFAULT, help=f"Godot source tag (default: {GODOT_TAG_DEFAULT}).")
     bootstrap.add_argument("--workdir", help="Temporary build directory (deleted unless --keep-workdir).")

@@ -11,7 +11,7 @@
   "capabilities": [
     "scaffold a self-contained Pong proof project",
     "validate Android 9+ and Windows 10/11 export configuration",
-    "source-build a temporary Linux x86_64 headless Godot editor",
+    "source-build a temporary Linux x86_64 2D headless confirmation runtime",
     "run in-engine headless confirmation",
     "run configured Windows/Android exports when platform prerequisites are present",
     "bundle a verified source product",

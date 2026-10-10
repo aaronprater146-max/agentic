@@ -20,7 +20,7 @@ other installed dependency.
 | `workspace-init` / `cleanup-workspace` | Mark and safely remove a disposable Arena work directory. |
 | `scaffold-pong` | Copy the standalone Pong proof project into a work directory. |
 | `validate` | Check required project files and target configuration without an engine. |
-| `bootstrap` | On Linux x86_64, source-build a **temporary** headless Godot 4.7.2 editor. |
+| `bootstrap` | On Linux x86_64, source-build a **temporary 2D confirmation runtime** from Godot 4.7.2. |
 | `confirm` | Run the project’s GDScript verification inside Godot headlessly. |
 | `export` | Invoke a configured Windows or Android export when all target prerequisites are available. |
 | `bundle` | Produce a compact source ZIP, excluding caches, engines, SDKs, templates, and secrets. |
@@ -59,8 +59,9 @@ tools by default.
 The source fallback is intentionally used for **headless confirmation**, not as
 a replacement for official export templates. It downloads the pinned Godot
 source tag from `codeload.github.com`, installs the pinned SCons build helper
-from `pypi.org`, builds a Linux x86_64 headless editor, and writes the engine to
-the disposable workspace.
+from `pypi.org`, builds a Linux x86_64 2D headless confirmation runtime, and
+writes it to the disposable workspace. It is intentionally not used for platform
+exports; use a matching full Godot editor plus export templates for that step.
 
 ```sh
 set -eu
