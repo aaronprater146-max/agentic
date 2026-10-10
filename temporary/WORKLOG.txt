@@ -4,6 +4,8 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 Last updated: 2026-10-10 (UTC)
 Session / assigned branch: arena/2f5538f1-agentic
 Cold-start source: arena/f686d89f-agentic at a73e699cb3a36894ff48d6559431c0cf85d1af69
+Latest confirmed remote storage ref: arena/2f5538f1-agentic at
+85e16d8567f6d31bf615aa740d2184ea42623905
 Current goal: handoff and cold-start context are loaded; agree on an
 implementation plan before building or installing tools.
 
@@ -50,6 +52,9 @@ ACTIONS AND VERIFICATION RESULTS
   forward the relevant decisions. No canonical tool catalog was edited.
 - Generalized branch guidance so future cold starts use the latest confirmed
   storage ref and their assigned Arena branch rather than a stale branch name.
+- Published the initial workspace synchronization on this assigned branch and
+  retrieved `HANDOFF.md`, `GOALS.md`, `TOOL_LOG.txt`, and `temporary/WORKLOG.txt`
+  from GitHub; all four were byte-for-byte matches at the confirmed ref above.
 
 PRODUCTS, CONTINUATION DATA, AND CLEANUP
 -----------------------------------------
@@ -57,6 +62,8 @@ PRODUCTS, CONTINUATION DATA, AND CLEANUP
 - Persistent sources: `HANDOFF.md`, `GOALS.md`, `TOOL_LOG.txt`, and this
   checkpoint's `temporary/WORKLOG.txt`.
 - Workspace copy retained: `ARENA_LOG.txt`, because it is the active local log.
+- Remote persistence of the initial workspace synchronization is verified at
+  `85e16d8567f6d31bf615aa740d2184ea42623905`.
 - No tool binaries, SDKs, caches, or generated intermediates were downloaded;
   no cleanup is required.
 
