@@ -2,10 +2,11 @@
 
 ## Download
 
-> **Pending first product commit.** This README will gain an immutable,
-> commit-pinned raw GitHub download URL after upload and byte verification.
+Verified immutable Arena-visible download (pinned to product commit
+[`70fa41b47e081c56e573487cf12de15d9b26fde1`](https://github.com/aaronprater146-max/agentic/commit/70fa41b47e081c56e573487cf12de15d9b26fde1)):
 
-- Artifact: [`NeonRallyPong-0.1.0-source.zip`](NeonRallyPong-0.1.0-source.zip)
+- **[Download NeonRallyPong-0.1.0-source.zip](https://github.com/aaronprater146-max/agentic/raw/70fa41b47e081c56e573487cf12de15d9b26fde1/WORK/neon-rally-pong-v0.1.0/NeonRallyPong-0.1.0-source.zip)**
+- Repository-relative artifact: [`NeonRallyPong-0.1.0-source.zip`](NeonRallyPong-0.1.0-source.zip)
 - SHA-256: `fe1273717ba80cb87bd8d419e4f38335166787ab847ac86fb0f903f6f945cdd5`
 - Integrity manifest: [`CHECKSUMS.sha256`](CHECKSUMS.sha256)
 

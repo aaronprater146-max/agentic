@@ -1,0 +1,10 @@
+Neon Rally Pong v0.1.0 source artifact
+
+Immutable raw GitHub download (product commit 70fa41b47e081c56e573487cf12de15d9b26fde1):
+https://github.com/aaronprater146-max/agentic/raw/70fa41b47e081c56e573487cf12de15d9b26fde1/WORK/neon-rally-pong-v0.1.0/NeonRallyPong-0.1.0-source.zip
+
+Artifact SHA-256:
+fe1273717ba80cb87bd8d419e4f38335166787ab847ac86fb0f903f6f945cdd5
+
+The artifact and product reports were retrieved from that commit and byte-compared
+against the local staged files on 2026-10-10 before this link record was created.
