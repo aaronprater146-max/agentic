@@ -4,13 +4,14 @@
 
 `aaronprater146-max/agentic` is this project's **deep-storage repository** and persistent memory for work done in Arena. It will hold reusable headless tools, compact project context, and finished products. Arena is a small, disposable execution workspace, not the permanent home of those assets.
 
-**Current scope: connectivity and documentation only.** No tools have been developed or installed. Do not build or install tools until the user requests them.
+**Current scope: goals and documentation only; connectivity is verified.** Read [GOALS.md](GOALS.md) for the intended Blender, layered-image, Godot, Android, and optional Windows capabilities. The user wants an implementation plan next, not tool development yet. No tools have been developed or installed. Do not build or install tools until the user requests them.
 
 ## Repository layout
 
 | Path | Role |
 | --- | --- |
 | `HANDOFF.md` | Read first: how an agent should use this repository. |
+| `GOALS.md` | Current creative/build goals; planning comes before implementation. |
 | `TOOL_LOG.txt` | Canonical tool catalog and starting template for the editable Arena log. Routine workspace activity must not edit this original. |
 | `temporary/WORKLOG.txt` | Latest persistent-memory snapshot. Replace its contents at checkpoints; do not create a new worklog per chat. |
 | `temporary/` | Other small, necessary continuation data. Despite its name, committed data here is persistent. |
@@ -19,7 +20,7 @@
 
 ## Start of a chat
 
-1. Read this handoff from the latest saved storage ref, then read `temporary/WORKLOG.txt` and `TOOL_LOG.txt`.
+1. Read this handoff from the latest saved storage ref, then read `GOALS.md`, `temporary/WORKLOG.txt`, and `TOOL_LOG.txt`.
 2. Download `TOOL_LOG.txt` into the Arena workspace as **`ARENA_LOG.txt`**. This is the working copy: the chat edits it to record tool availability, local installs, usage, outcomes, product locations, and continuation notes.
 3. Bring relevant context from the saved worklog into the working copy. Preserve useful decisions and unfinished work, but do not treat a previous chat's installed-tool list as proof that those tools are installed now. Check the actual workspace.
 4. Retrieve only the tools, inputs, and dependencies needed for the requested outcome. Prefer individual-file downloads over bringing all deep storage into Arena. Do not install the entire tool suite by default.
