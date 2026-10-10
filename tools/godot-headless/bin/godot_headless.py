@@ -490,6 +490,8 @@ def command_bootstrap(args: argparse.Namespace) -> int:
             "target=template_debug",
             "headless=yes",
             "disable_3d=yes",
+            "vulkan=no",
+            "opengl3=no",
             "x11=no",
             "wayland=no",
             "alsa=no",
