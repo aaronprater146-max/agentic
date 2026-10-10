@@ -1,79 +1,89 @@
 AGENTIC — LATEST PERSISTENT WORKLOG
 ====================================
 
-Last updated: 2026-10-10 (UTC)
-Session / assigned branch: arena/2f5538f1-agentic
-Cold-start source: arena/f686d89f-agentic at a73e699cb3a36894ff48d6559431c0cf85d1af69
+Working copy of the canonical TOOL_LOG.txt. Edit this file, never the original.
+Persist it as temporary/WORKLOG.txt at checkpoints. See HANDOFF.md.
+
+Last updated: 2026-10-10 08:49 UTC
+Session / assigned branch: arena/6a1ac000-agentic
 Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-85e16d8567f6d31bf615aa740d2184ea42623905
-Current goal: handoff and cold-start context are loaded; agree on an
-implementation plan before building or installing tools.
+50f52ac987153e4583a32ff7aff6d7659f39c938
+Cold-start source: HANDOFF.md, GOALS.md, TOOL_LOG.txt and temporary/WORKLOG.txt
+read from the ref above and imported onto this branch by fast-forward
+(this branch shared the root commit 197b95381, so no content was discarded).
+Current goal: workspace initialized and ready; per GOALS.md the next step is to
+agree an implementation plan. No tool is built, installed, or run yet.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
-- Repository: aaronprater146-max/agentic is deep storage and persistent memory
-  for Arena work. Keep the execution workspace small.
-- The tool suite must be Arena-operated and headless; it will create editable
-  visual assets and Godot products rather than a separate end-user application.
-- `TOOL_LOG.txt` is the canonical catalog/template. `ARENA_LOG.txt` is the
-  editable local working copy. Save the current working state to this file at a
-  checkpoint, never over the canonical catalog.
-- Store small finished products in `products/` with provenance and retrieval
-  instructions. Use approved artifact storage for oversized outputs.
-- Do not record credentials, commit dependencies/caches, or remove the managed
-  checkout root or `.git` directory.
+- aaronprater146-max/agentic is deep storage and persistent memory for Arena
+  work. The Arena execution workspace stays small and disposable.
+- The suite is Arena-operated and headless: editable visual assets and Godot
+  products, not a separate end-user application.
+- TOOL_LOG.txt = canonical catalog/template. ARENA_LOG.txt = editable working
+  copy (git-ignored). temporary/WORKLOG.txt = latest saved snapshot.
+- WORK/ is the destination for finished products; products/ is the older
+  placeholder, superseded for new work.
+- Never commit credentials, dependency downloads, caches, or build runtimes.
+- Work only on the assigned session branch; use the latest confirmed storage
+  ref for unmerged memory rather than assuming main has it.
 
-CURRENT TOOL GOALS
-------------------
-- Blender: scripted scene/asset creation, editing, rendering, and Godot-ready
-  exports with editable source retained.
-- Layered images: authored/procedural 2D artwork, masks, typography, and
-  compositing; no Stable Diffusion pipeline is planned.
-- Godot: project/source assembly, asset validation, headless checks, and
-  exportable builds.
-- Android: documented headless SDK/build path for APK/AAB output and secure
-  release-signing handling.
-- Windows packaging is optional and remains to be scoped.
+CURRENT TOOL GOALS (from GOALS.md)
+----------------------------------
+- Blender: scripted scene/asset creation, editing, rendering, Godot-ready
+  exports, editable source retained.
+- Layered images: authored/procedural 2D artwork, masks, typography,
+  compositing. No Stable Diffusion pipeline is planned.
+- Godot: project/source assembly, asset validation, headless checks, exports.
+- Android: documented headless SDK/build path for APK/AAB; secure release
+  signing (no secrets in the log or repo).
+- Windows .exe packaging: optional, still to be scoped.
 
 TOOL AVAILABILITY AND LOCAL INSTALLATION STATE
 ----------------------------------------------
-- Available reusable tools: none developed yet.
+- Available reusable tools in tools/: godot-headless 0.1.0 (source present in
+  the repository; entry point tools/godot-headless/bin/godot_headless.py).
+  It is source only — it has NOT been downloaded into a disposable workspace
+  and NOT been run in this session.
 - Installed project tools or SDKs: none.
-- Tool executions during this cold start: none.
+- Actual workspace check performed this session: godot, godot4, blender, java,
+  gradle, adb and sdkmanager are all NOT INSTALLED. Python 3.11.2 is present
+  with only pip/setuptools/wheel. Prior sessions' installed-tool lists were not
+  treated as proof of current availability.
+- Tool executions during this session: none.
 
 ACTIONS AND VERIFICATION RESULTS
 --------------------------------
-- Fetched and read the latest known handoff, goals, canonical tool log, and
-  persistent worklog from `arena/f686d89f-agentic` at
-  `a73e699cb3a36894ff48d6559431c0cf85d1af69`.
-- Imported the handoff/cold-start repository layout into the assigned branch
-  without switching branches.
-- Created the git-ignored `ARENA_LOG.txt` from the canonical log and carried
-  forward the relevant decisions. No canonical tool catalog was edited.
-- Generalized branch guidance so future cold starts use the latest confirmed
-  storage ref and their assigned Arena branch rather than a stale branch name.
-- Published the initial workspace synchronization on this assigned branch and
-  retrieved `HANDOFF.md`, `GOALS.md`, `TOOL_LOG.txt`, and `temporary/WORKLOG.txt`
-  from GitHub; all four were byte-for-byte matches at the confirmed ref above.
+- Read the handoff, goals, canonical tool log, and latest persistent worklog.
+- Discovered the handoff on unmerged session branches (main holds only the
+  initial commit with README.md). Most advanced confirmed ref is
+  arena/2f5538f1-agentic at 50f52ac98.
+- Imported that state onto the assigned branch with a fast-forward merge (no
+  branch switch, no force-push, no other branch modified).
+- Verified HANDOFF.md, GOALS.md, TOOL_LOG.txt, temporary/WORKLOG.txt,
+  AGENTS.md and tools/toolbox.json against GitHub at that ref: all six are
+  byte-for-byte matches (sha256).
+- Created this git-ignored ARENA_LOG.txt from the canonical log and carried
+  forward the prior session's decisions. No canonical catalog was edited.
+- Kept the workspace minimal: no tool, runtime, SDK, or dependency was
+  downloaded or installed, because no task requiring one was requested.
 
 PRODUCTS, CONTINUATION DATA, AND CLEANUP
------------------------------------------
-- Product builds/assets: none.
-- Persistent sources: `HANDOFF.md`, `GOALS.md`, `TOOL_LOG.txt`, and this
-  checkpoint's `temporary/WORKLOG.txt`.
-- Workspace copy retained: `ARENA_LOG.txt`, because it is the active local log.
-- Remote persistence of the initial workspace synchronization is verified at
-  `85e16d8567f6d31bf615aa740d2184ea42623905`.
-- No tool binaries, SDKs, caches, or generated intermediates were downloaded;
-  no cleanup is required.
+----------------------------------------
+- Product builds/assets: none. WORK/ and products/ hold placeholders only.
+- Persistent sources imported onto this branch: HANDOFF.md, GOALS.md,
+  TOOL_LOG.txt, AGENTS.md, .gitignore, README.md, temporary/, products/,
+  WORK/ and tools/ (including the godot-headless tool source).
+- Workspace copy retained: ARENA_LOG.txt (active local log, git-ignored).
+- Cleanup: nothing to remove — no disposable downloads or intermediates exist.
 
 BLOCKERS AND NEXT STEPS
 -----------------------
-- No implementation work is authorized by the saved goals. First agree on a
-  development plan, priorities, and a smallest end-to-end demonstration.
-- Planning must confirm dependency versions/sources, headless interfaces,
-  platform feasibility, validation criteria, storage budget, and signing
-  arrangements before tools are developed or installed.
-- At the next checkpoint, update the local working log with actual results,
-  replace this file, publish only intended files on the assigned branch, and
-  verify the remote copy before cleanup.
+- GOALS.md authorizes planning only. Do not build or install tools until the
+  user requests it and the plan is agreed.
+- Next: agree an implementation plan — priorities, the smallest end-to-end
+  demonstration, tool interfaces, dependency sources/versions, headless
+  validation criteria, platform feasibility, storage budget, and signing.
+- At the next checkpoint: update this log with real results, replace
+  temporary/WORKLOG.txt, publish only intended files on the assigned branch,
+  verify the remote copy, and only then remove disposable local files.
