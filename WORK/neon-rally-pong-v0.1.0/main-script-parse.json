@@ -1,0 +1,9 @@
+{
+  "action": "parse-main-script",
+  "engine_version": "4.7.2.stable.custom_build",
+  "marker": "MAIN_SCRIPT_PARSE_PASS",
+  "note": "Loaded res://scripts/main.gd through Godot headlessly after the Neon Rally customization.",
+  "status": "passed",
+  "stderr": "ERROR: Could not load global script cache.\n   at: get_global_class_list (core/config/project_settings.cpp:1458)\n",
+  "stdout": "Godot Engine v4.7.2.stable.custom_build - https://godotengine.org\n\nMAIN_SCRIPT_PARSE_PASS\n"
+}

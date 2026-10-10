@@ -1,0 +1,12 @@
+{
+  "action": "bundle-product",
+  "bundle": "/tmp/arena-neon-rally-pong.owhAZ8/run/NeonRallyPong-0.1.0-source.zip",
+  "bundle_root": "neon-rally-pong",
+  "included_confirmation_report": true,
+  "product": "Neon Rally Pong",
+  "sha256": "fe1273717ba80cb87bd8d419e4f38335166787ab847ac86fb0f903f6f945cdd5",
+  "size_bytes": 9058,
+  "status": "passed",
+  "tool": "godot-headless",
+  "tool_version": "0.1.3"
+}

@@ -4,101 +4,96 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/2f5538f1-agentic
 Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-47b9cd44f177a6bdfcc6d1dc185ed244803471c6
-Current goal: first verified Godot/Pong toolbox proof is remotely stored and
-Arena cleanup is complete; next provision target dependencies for native exports.
+57c9f56 (toolbox v0.1.3 source; Neon Rally product upload pending)
+Current goal: publish the second headless-verified Pong variation, verify its
+remote product link, then remove its disposable Arena workspace.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
 - `agentic` is durable storage for reusable headless Arena tools and finished
-  products. Arena execution state is disposable.
-- The durable toolbox is `tools/`; machine/human indexes are
-  `tools/toolbox.json` and `tools/TOOLBOX.md`.
-- A tool is fetched at a confirmed ref into a marked temporary workspace, run
-  headlessly, validated, then removed only after its product is persisted.
-- New products go in `WORK/`, not legacy `products/`. Each needs artifact,
-  README, target/build status, compact provenance, checksum, and an immutable
-  raw GitHub download URL after publication.
-- `TOOL_LOG.txt` is the canonical catalog. `ARENA_LOG.txt` is the local editable
-  copy; replace this worklog at checkpoints rather than overwriting the catalog.
-- Never commit runtimes, Android SDK/JDK files, export templates, caches,
-  `.godot` import state, signing material, or secrets.
+  products. Arena runtime/workspace state is disposable.
+- The durable toolbox is `tools/`; indexes are `tools/TOOLBOX.md` and
+  `tools/toolbox.json`. Download only the selected entry at a confirmed ref.
+- New products go in `WORK/` with a source/binary artifact, README, compact
+  provenance, checksums, target status, and immutable raw GitHub link after
+  publication. `products/` is legacy only.
+- `TOOL_LOG.txt` is canonical; local `ARENA_LOG.txt` is the editable copy.
+- Never commit Godot runtimes, SDK/JDK files, export templates, object caches,
+  `.godot` cache, signing keys, passwords, tokens, or secrets.
 
-AVAILABLE TOOL
---------------
-- `godot-headless` v0.1.2 at `tools/godot-headless/`.
-- Entry point: `python3 bin/godot_headless.py` after sparse-downloading that
-  tool into a disposable workspace.
-- Commands: `workspace-init`, `scaffold-pong`, `validate`, `bootstrap`,
-  `confirm`, `export`, `bundle`, and `cleanup-workspace`.
-- The source bootstrap builds a Linux x86_64 Godot 4.7.2 2D template-debug
-  runtime for confirmation. It disables display/rendering drivers but retains
-  project-path support. Native exports use an externally provisioned matching
-  full editor/template setup instead.
+TOOL AVAILABILITY
+-----------------
+- Available reusable tool: `godot-headless` v0.1.3 at
+  `tools/godot-headless/`.
+- Entry point: `python3 bin/godot_headless.py` after sparse-download into a
+  marked disposable workspace.
+- Commands: `tool-info`, `workspace-init`, `scaffold-pong`, `validate`,
+  `bootstrap`, `confirm`, `export`, `bundle`, `cleanup-workspace`.
+- v0.1.3 improves bundling: the ZIP root and `PRODUCT_MANIFEST.json` now derive
+  from `project.godot` `config/name`, so customized games carry their own title
+  rather than the generic scaffold name. Five Python tests pass.
 
-ACTUAL TOOL EXECUTION AND VERIFICATION
---------------------------------------
-- Downloaded the published toolbox entry via sparse clone into an ephemeral
-  Arena workspace; the final proof used the remote `godot-headless` v0.1.2
-  source, not a repository-local execution copy.
-- Source-built the temporary runtime from Godot `4.7.2-stable` using SCons
-  `4.10.1` installed only in the disposable build workspace.
-- Source archive SHA-256:
-  `e954996374cbd1cb5d72e0e3781cc537408e6ce73b010b12c6c2f308a820690a`.
-- Built runtime reported `4.7.2.stable.custom_build`, size 63,382,592 bytes,
-  SHA-256 `37674ef71d1df4abc1d844feaf3da030781e1967d53335a68a262b93cea69f4c`.
-- Scaffolded Pong with a deterministic computer opponent, keyboard/touch
-  controls, a Compatibility-renderer project, and export presets.
-- In-engine `confirm` exited 0 and emitted `PONG_CONFIRMATION_PASS`. It tested
-  paddle collision, computer movement, scoring/reset behavior, and bounds.
-- The compact runtime logs a missing global-script-cache message because it has
-  no editor-generated cache. Tool v0.1.2 preserves raw stderr and explicitly
-  classifies this as non-fatal only with zero exit plus pass marker.
-- Python tool tests pass: 4 tests covering scaffold/validation/confirmation,
-  bundle contents, known-warning classification, failure reporting, and safe
-  cleanup-marker behavior.
-
-PRODUCT AND TARGET STATUS
+PREVIOUS VERIFIED PRODUCT
 -------------------------
-- Published product: `WORK/arena-pong-v0.1.2/` at verified commit
-  `a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92`.
-- Direct source download:
+- Baseline source product: `WORK/arena-pong-v0.1.2/`.
+- Verified immutable download:
   `https://github.com/aaronprater146-max/agentic/raw/a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92/WORK/arena-pong-v0.1.2/ArenaPong-0.1.2-source.zip`.
-- Artifact: `ArenaPong-0.1.2-source.zip`, SHA-256
-  `c36e2f1df62c5c3d16ccfa217a654f5284c25859c36f74d09119ee930abf4e3d`.
-- The ZIP contains project source, `export_presets.cfg`, the in-engine test,
-  product manifest, and confirmation report; it excludes engines and `.godot`
-  caches. Archive structure was inspected locally and remote bytes were matched.
-- Windows: preset `Windows 10/11 x86_64` is configured. No `.exe` was built:
-  matching Windows export templates were not present in this Arena workspace.
-- Android: preset requires minimum SDK API 28 (Android 9+) with `arm64-v8a` and
-  `armeabi-v7a`. No APK/AAB was built: matching Android templates, Android SDK,
-  and JDK were not present. The tool's `export` command checks prerequisites;
-  it must be used with a real configured editor before claiming a mobile build.
-- No fake platform binaries were produced.
+- It passed in-engine headless confirmation. It configures Windows 10/11 x86_64
+  and Android 9+ / API 28 but contains no native export.
+
+CURRENT NEON RALLY PONG RUN
+---------------------------
+- Downloaded the published `godot-headless` tool with a sparse clone from the
+  assigned remote branch into a marked ephemeral Arena workspace.
+- `tool-info`, `workspace-init`, `scaffold-pong`, `validate`, `bootstrap`,
+  `confirm`, both target `export` paths, and `bundle` were all exercised.
+- Customized the scaffold into **Neon Rally Pong**: violet/mint/magenta neon
+  visual theme, faster serves/player response, slightly slower AI, higher rally
+  speed ceiling, distinct app/package names, and a `PRODUCT_VARIANT.md` source
+  note.
+- `validate` passed all project/configuration checks.
+- `bootstrap` source-built Godot `4.7.2-stable` with SCons `4.10.1` in the
+  disposable workspace. Source archive SHA-256:
+  `e954996374cbd1cb5d72e0e3781cc537408e6ce73b010b12c6c2f308a820690a`.
+- Temporary runtime: `4.7.2.stable.custom_build`, 63,382,592 bytes, SHA-256
+  `37674ef71d1df4abc1d844feaf3da030781e1967d53335a68a262b93cea69f4c`.
+- `confirm` exited zero and emitted `PONG_CONFIRMATION_PASS`; it exercised
+  paddle collision, computer movement, score/reset, and court bounds. The known
+  missing global-script-cache stderr from the minimal runtime was correctly
+  classified as non-fatal only after the zero exit/pass marker.
+- Android export preflight correctly refused to build without `ANDROID_SDK_ROOT`
+  / `ANDROID_HOME` and Java. Windows export correctly failed rather than making
+  a dummy `.exe`, because the compact confirmation runtime is not a matching
+  full export editor/template installation.
+
+CURRENT PRODUCT STATUS
+----------------------
+- Staged product directory: `WORK/neon-rally-pong-v0.1.0/`.
+- Artifact: `NeonRallyPong-0.1.0-source.zip`, SHA-256
+  `fe1273717ba80cb87bd8d419e4f38335166787ab847ac86fb0f903f6f945cdd5`.
+- The ZIP has root `neon-rally-pong/`, manifest product `Neon Rally Pong`,
+  project source, customization note, export presets, confirmation report, and
+  no engine or `.godot` cache. ZIP/checksum contents were locally verified.
+- Included reports document successful validation/bootstrap/confirmation/bundle
+  and expected Android/Windows export preflight failures. No APK, AAB, or `.exe`
+  is claimed or included.
+- The product is local pending commit/push, remote byte verification, and a
+  commit-pinned direct raw GitHub link.
 
 PUBLISHING AND CLEANUP STATUS
 -----------------------------
-- Product, toolbox source, documentation, and prior worklog were pushed at
-  `a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92`. GitHub raw retrieval confirmed
-  byte matches for the source ZIP, checksum manifest, reports, tool entry point,
-  toolbox index, handoff, and worklog.
-- The immutable product-link/worklog update was then pushed at
-  `47b9cd44f177a6bdfcc6d1dc185ed244803471c6` and remotely byte-verified,
-  including `DOWNLOAD_URL.txt`, product README, product ZIP, confirmation,
-  handoff, and tool source.
-- Cleanup completed after that verification: the marked Arena workspace,
-  downloaded tool copies, temporary 63 MB Godot runtime, source/build caches,
-  scratch projects, and local reports were removed. No Godot/SCons process is
-  active; no runtime/dependency is in Git.
+- Toolbox v0.1.3 source is pushed at `57c9f56`; new product/docs/worklog remain
+  local for this checkpoint.
+- The marked disposable workspace currently retains the downloaded tool copies,
+  temporary 63 MB runtime, source project/cache, and scratch reports solely
+  until the `WORK/` product is remotely verified.
 
 NEXT STEPS
 ----------
-1. Publish this compact cleanup snapshot and retrieve it once; no Arena tool
-   installation remains to clean from this proof run.
-2. For native target proof, obtain matching Godot export templates; for Android
-   also provision a compatible JDK/SDK in a disposable workspace, run actual
-   exports, validate outputs on target-capable infrastructure, then store only
-   those finished artifacts/reports in a new `WORK/` version directory.
-3. Choose the next requested toolbox capability after the native export proof
-   (for example, wider Godot automation, asset creation, or layered imaging).
+1. Publish product/documentation/worklog on the assigned branch and retrieve
+   exact remote bytes. Add the immutable link to the product README.
+2. Run `cleanup-workspace`, remove all downloaded tool copies, and publish the
+   compact cleanup state after persistence is confirmed.
+3. For native Windows/Android builds, use a full matching Godot editor/export
+   template setup; Android additionally requires compatible JDK/SDK/build tools
+   and external secure signing.

@@ -10,7 +10,7 @@ before starting.
 AVAILABLE REUSABLE TOOLS
 ------------------------
 
-### `godot-headless` v0.1.2
+### `godot-headless` v0.1.3
 
 - **Purpose:** Headless Godot 4.7 workflow for a Pong proof project: scaffold,
   static target validation, temporary Linux confirmation runtime bootstrap,

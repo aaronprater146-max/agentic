@@ -1,0 +1,119 @@
+{
+  "action": "export",
+  "android_prerequisites": {
+    "android_sdk": null,
+    "java": null
+  },
+  "checked_at": "2026-10-10T22:41:11Z",
+  "error": "Android export requires ANDROID_SDK_ROOT (or ANDROID_HOME) to point to an installed Android SDK.",
+  "mode": "debug",
+  "output": "/tmp/arena-neon-rally-pong.owhAZ8/run/NeonRallyPong.apk",
+  "preset": "Android 9+ (API 28)",
+  "project_validation": {
+    "checks": [
+      {
+        "name": "project.godot",
+        "passed": true,
+        "path": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong/project.godot"
+      },
+      {
+        "name": "export_presets.cfg",
+        "passed": true,
+        "path": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong/export_presets.cfg"
+      },
+      {
+        "name": "Pong simulation",
+        "passed": true,
+        "path": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong/scripts/pong_simulation.gd"
+      },
+      {
+        "name": "Pong scene",
+        "passed": true,
+        "path": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong/scripts/main.gd"
+      },
+      {
+        "name": "Headless confirmation",
+        "passed": true,
+        "path": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong/tests/headless_confirmation.gd"
+      },
+      {
+        "name": "Product instructions",
+        "passed": true,
+        "path": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong/README.md"
+      },
+      {
+        "expected": "run/main_scene=\"res://scripts/main.gd\"",
+        "name": "project main scene",
+        "passed": true
+      },
+      {
+        "expected": "renderer/rendering_method=\"gl_compatibility\"",
+        "name": "Compatibility renderer",
+        "passed": true
+      },
+      {
+        "expected": "viewport_width=960",
+        "name": "landscape viewport",
+        "passed": true
+      },
+      {
+        "expected": "name=\"Windows 10/11 x86_64\"",
+        "name": "Windows export preset",
+        "passed": true
+      },
+      {
+        "expected": "binary_format/architecture=\"x86_64\"",
+        "name": "Windows x86_64",
+        "passed": true
+      },
+      {
+        "expected": "name=\"Android 9+ (API 28)\"",
+        "name": "Android export preset",
+        "passed": true
+      },
+      {
+        "expected": "gradle_build/min_sdk=\"28\"",
+        "name": "Android minimum SDK 28",
+        "passed": true
+      },
+      {
+        "expected": "gradle_build/use_gradle_build=true",
+        "name": "Android Gradle export",
+        "passed": true
+      },
+      {
+        "expected": "architectures/arm64-v8a=true",
+        "name": "Android arm64",
+        "passed": true
+      },
+      {
+        "expected": "architectures/armeabi-v7a=true",
+        "name": "Android armv7",
+        "passed": true
+      }
+    ],
+    "failures": [],
+    "passed": true,
+    "project": "/tmp/arena-neon-rally-pong.owhAZ8/run/neon-rally-pong",
+    "targets": {
+      "android_9_plus": {
+        "abis": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ],
+        "min_sdk": 28,
+        "preset": "Android 9+ (API 28)",
+        "status": "configured"
+      },
+      "windows_10_11": {
+        "architecture": "x86_64",
+        "preset": "Windows 10/11 x86_64",
+        "status": "configured"
+      }
+    }
+  },
+  "status": "failed",
+  "target": "android",
+  "tool": "godot-headless",
+  "tool_version": "0.1.3"
+}

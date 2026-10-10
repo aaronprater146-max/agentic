@@ -10,8 +10,9 @@ intermediate output.
 
 **Current implementation:** the first tool,
 [`tools/godot-headless/`](tools/godot-headless/), is available. It produces and
-confirms a simple Pong proof project inside Godot headlessly. The verified
-source product is in [`WORK/arena-pong-v0.1.2/`](WORK/arena-pong-v0.1.2/).
+confirms Pong projects inside Godot headlessly. Verified source products are
+[`WORK/arena-pong-v0.1.2/`](WORK/arena-pong-v0.1.2/) and
+[`WORK/neon-rally-pong-v0.1.0/`](WORK/neon-rally-pong-v0.1.0/).
 Windows 10/11 and Android 9+ export presets are configured, but no native
 binary has been claimed unless its product directory includes a successful
 export report.

@@ -11,7 +11,7 @@ removes the local runtime/tool copy.
 ## Current delivery
 
 The first reusable toolbox entry is
-[`godot-headless`](tools/godot-headless/README.md) **v0.1.2**. It provides a
+[`godot-headless`](tools/godot-headless/README.md) **v0.1.3**. It provides a
 headless Godot 4.7 workflow that can:
 
 - scaffold a small Pong game against a computer opponent;
@@ -23,13 +23,17 @@ headless Godot 4.7 workflow that can:
 - invoke Windows/Android exports when matching templates and target SDK tools
   are provisioned.
 
-The first proof product is
-[`WORK/arena-pong-v0.1.2/`](WORK/arena-pong-v0.1.2/): a source ZIP whose
-headless engine confirmation passed. It is **configured** for Windows 10/11
-x86_64 and Android 9+ (API 28, `arm64-v8a` and `armeabi-v7a`). No fake `.exe`
-or `.apk` is included: this Arena worker lacked matching export templates and,
-for Android, the SDK/JDK. See the product README for exact status and the
-verified download link.
+Verified source products now include:
+
+- [`Arena Pong v0.1.2`](WORK/arena-pong-v0.1.2/), the baseline proof; and
+- [`Neon Rally Pong v0.1.0`](WORK/neon-rally-pong-v0.1.0/), a faster neon
+  variation that exercised every available `godot-headless` workflow command.
+
+Both products passed the in-engine headless confirmation and are **configured**
+for Windows 10/11 x86_64 and Android 9+ (API 28, `arm64-v8a` and
+`armeabi-v7a`). No fake `.exe` or `.apk` is included: this Arena worker lacks
+matching export templates and, for Android, the SDK/JDK. Each product README
+states its exact status and download link after remote verification.
 
 ## Storage map
 

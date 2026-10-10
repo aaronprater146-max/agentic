@@ -60,10 +60,11 @@ Desired capabilities include:
 
 **Outcome:** An Arena agent can move from project source and assets to a checked, exportable Godot project and supported target builds.
 
-**Current milestone:** `tools/godot-headless` v0.1.2 scaffolds a Pong proof,
+**Current milestone:** `tools/godot-headless` v0.1.3 scaffolds a Pong proof,
 validates its target presets, source-builds a temporary Linux headless confirmation
 runtime when necessary, runs an in-engine GDScript test, and bundles the verified
-source product. The first result is `WORK/arena-pong-v0.1.2/`. This proves the
+source product. Verified variants are `WORK/arena-pong-v0.1.2/` and
+`WORK/neon-rally-pong-v0.1.0/`. This proves the
 engine/GDScript workflow—not a Windows or Android binary export.
 
 ## 04 · Android SDK and build capability
