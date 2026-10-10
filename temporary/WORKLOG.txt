@@ -3,10 +3,11 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 
 Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/2f5538f1-agentic
-Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-0957b1367143e999871e1774f182e6af81c73d67 (artifact, link record, and reports retrieved and compared)
-Current goal: persist and remotely verify the compact cleanup record for the
-second headless-verified Pong variation.
+Last remotely verified lifecycle checkpoint: arena/2f5538f1-agentic at
+bb8b4bdbbc4fcc7621781a248f013e0091f9fb8c (cleanup record, checksum manifest,
+product README, catalog, and worklog byte-compared)
+Current goal: no active lifecycle task; the Neon Rally product is published and
+its disposable Arena workspace has been removed.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
@@ -89,13 +90,12 @@ PUBLISHING AND CLEANUP STATUS
 -----------------------------
 - Toolbox v0.1.3 source is pushed at `57c9f56`; the product is pushed at
   `70fa41b47e081c56e573487cf12de15d9b26fde1` and remotely byte-verified.
-- Cleanup completed locally after that verification. Only the durable product
-  cleanup record remains to be committed/pushed and retrieved for final proof.
+- Cleanup record was committed, pushed, retrieved, and byte-verified at
+  `bb8b4bdbbc4fcc7621781a248f013e0091f9fb8c`; the product lifecycle is complete.
 
 NEXT STEPS
 ----------
-1. Commit/push the cleanup record, retrieve it from GitHub, and verify its
-   bytes before declaring the lifecycle complete.
+1. No active publication or cleanup task remains for this product.
 2. For native Windows/Android builds, use a full matching Godot editor/export
    template setup; Android additionally requires compatible JDK/SDK/build tools
    and external secure signing.
