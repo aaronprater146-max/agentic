@@ -30,7 +30,7 @@ from typing import Any, Iterable
 
 
 TOOL_ID = "godot-headless"
-TOOL_VERSION = "0.1.2"
+TOOL_VERSION = "0.1.3"
 GODOT_TAG_DEFAULT = "4.7.2-stable"
 SCONS_VERSION = "4.10.1"
 PASS_MARKER = "PONG_CONFIRMATION_PASS"
@@ -170,6 +170,21 @@ def project_validation(project: Path) -> dict[str, Any]:
             },
         },
     }
+
+
+def project_display_name(project: Path) -> str:
+    """Read the plain-text Godot display name for product bundle metadata."""
+    project_file = project / "project.godot"
+    require_file(project_file, "Godot project configuration")
+    match = re.search(r'^config/name="([^"\n]*)"$', project_file.read_text(encoding="utf-8"), re.MULTILINE)
+    if not match or not match.group(1).strip():
+        raise ToolError(f"Could not read a non-empty config/name from {project_file}")
+    return match.group(1).strip()
+
+
+def product_root_name(display_name: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", display_name.lower()).strip("-")
+    return slug or "godot-product"
 
 
 def run_process(command: list[str], *, cwd: Path, timeout: int) -> dict[str, Any]:
@@ -369,9 +384,10 @@ def command_bundle(args: argparse.Namespace) -> int:
         require_file(confirmation_report, "Confirmation report")
     remove_or_fail(output, args.force, "Bundle output")
     output.parent.mkdir(parents=True, exist_ok=True)
-    root_name = "arena-pong"
+    display_name = project_display_name(project)
+    root_name = product_root_name(display_name)
     manifest = {
-        "product": "Arena Pong",
+        "product": display_name,
         "product_type": "Godot source bundle",
         "tool": TOOL_ID,
         "tool_version": TOOL_VERSION,
@@ -395,6 +411,8 @@ def command_bundle(args: argparse.Namespace) -> int:
         "tool": TOOL_ID,
         "tool_version": TOOL_VERSION,
         "bundle": str(output),
+        "product": display_name,
+        "bundle_root": root_name,
         "size_bytes": output.stat().st_size,
         "sha256": sha256(output),
         "included_confirmation_report": bool(confirmation_report),

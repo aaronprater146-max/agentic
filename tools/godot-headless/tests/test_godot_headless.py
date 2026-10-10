@@ -88,6 +88,25 @@ class GodotHeadlessToolTests(unittest.TestCase):
             self.assertIn("arena-pong/PRODUCT_MANIFEST.json", names)
             self.assertFalse(any("/.godot/" in name for name in names))
 
+    def test_bundle_uses_project_display_name_for_metadata_and_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            project = root / "neon-rally"
+            bundle = root / "NeonRallyPong-source.zip"
+            self.run_tool("scaffold-pong", "--output", str(project))
+            project_file = project / "project.godot"
+            project_file.write_text(
+                project_file.read_text(encoding="utf-8").replace(
+                    'config/name="Arena Pong"', 'config/name="Neon Rally Pong"'
+                ),
+                encoding="utf-8",
+            )
+            self.run_tool("bundle", "--project", str(project), "--output", str(bundle))
+            with zipfile.ZipFile(bundle) as archive:
+                manifest = json.loads(archive.read("neon-rally-pong/PRODUCT_MANIFEST.json"))
+                self.assertIn("neon-rally-pong/project.godot", archive.namelist())
+            self.assertEqual(manifest["product"], "Neon Rally Pong")
+
     def test_cleanup_requires_our_marker(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             workspace = Path(temporary) / "ephemeral"
