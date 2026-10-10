@@ -1,0 +1,47 @@
+AGENTIC — CANONICAL TOOL CATALOG / ARENA LOG TEMPLATE
+===================================================
+
+This is the repository original. During routine use, download it into the
+Arena workspace as ARENA_LOG.txt and edit only that working copy.
+Persist the working copy as temporary/WORKLOG.txt at checkpoints, not here.
+Consult HANDOFF.md and the latest saved worklog before starting.
+Catalog/source updates belong to explicitly requested tool development.
+
+AVAILABLE REUSABLE TOOLS
+-----------------------
+None yet. Current scope is connectivity and persistent-memory setup only.
+No tool entry points exist; do not invent commands or install tools now.
+
+When a tool is developed, its catalog entry should include:
+- Name, purpose, and repository path/version.
+- Headless entry point and exact usage examples.
+- Required dependencies, inputs, and expected outputs.
+- Limitations, verification steps, and local cleanup instructions.
+
+WORKING LOG — FILL IN THE DOWNLOADED COPY ONLY
+--------------------------------------------
+Last updated (include timezone):
+Session / assigned branch:
+Latest confirmed remote storage ref or commit:
+Current goal:
+
+Persistent project context and decisions:
+
+Tool availability and local installation state:
+- Tool / version / source:
+- Download or installation location:
+- Actual usage and outcome:
+- Current state (not installed / installed / removed):
+
+Actions and verification results:
+
+Products and continuation data:
+- Repository or artifact path:
+- How to retrieve and use it:
+- Remote persistence verified:
+
+Cleanup:
+- Workspace copies and dependencies removed:
+- Files retained locally and why:
+
+Blockers and next steps:

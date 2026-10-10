@@ -1,0 +1,16 @@
+# The editable workspace copy is not the canonical catalog or snapshot.
+/ARENA_LOG.txt
+
+# Disposable execution state and dependencies.
+.arena/
+.cache/
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+
+# Secrets remain outside Git; example configuration may be tracked.
+.env
+.env.*
+!.env.example
