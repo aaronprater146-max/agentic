@@ -4,9 +4,9 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/2f5538f1-agentic
 Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-70fa41b47e081c56e573487cf12de15d9b26fde1 (Neon Rally product bytes retrieved and compared)
-Current goal: publish the second headless-verified Pong variation, verify its
-remote product link, then remove its disposable Arena workspace.
+0957b1367143e999871e1774f182e6af81c73d67 (artifact, link record, and reports retrieved and compared)
+Current goal: persist and remotely verify the compact cleanup record for the
+second headless-verified Pong variation.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
@@ -68,7 +68,7 @@ CURRENT NEON RALLY PONG RUN
 
 CURRENT PRODUCT STATUS
 ----------------------
-- Staged product directory: `WORK/neon-rally-pong-v0.1.0/`.
+- Durable product directory: `WORK/neon-rally-pong-v0.1.0/`.
 - Artifact: `NeonRallyPong-0.1.0-source.zip`, SHA-256
   `fe1273717ba80cb87bd8d419e4f38335166787ab847ac86fb0f903f6f945cdd5`.
 - The ZIP has root `neon-rally-pong/`, manifest product `Neon Rally Pong`,
@@ -80,19 +80,22 @@ CURRENT PRODUCT STATUS
 - Product bytes and key reports were retrieved from remote commit
   `70fa41b47e081c56e573487cf12de15d9b26fde1` and byte-compared. Its immutable
   artifact URL is recorded in `WORK/neon-rally-pong-v0.1.0/DOWNLOAD_URL.txt`.
+- The marker-protected `cleanup-workspace` command passed after remote
+  verification. The enclosing temporary workspace, downloaded tool copies,
+  source cache, and 63 MB runtime were removed; `cleanup.json` records the
+  postcondition with no relevant Godot/SCons processes remaining.
 
 PUBLISHING AND CLEANUP STATUS
 -----------------------------
 - Toolbox v0.1.3 source is pushed at `57c9f56`; the product is pushed at
   `70fa41b47e081c56e573487cf12de15d9b26fde1` and remotely byte-verified.
-- The marked disposable workspace may now be cleaned with the tool’s
-  marker-protected `cleanup-workspace` command; delete its downloaded tool
-  copies/runtime only after that cleanup succeeds.
+- Cleanup completed locally after that verification. Only the durable product
+  cleanup record remains to be committed/pushed and retrieved for final proof.
 
 NEXT STEPS
 ----------
-1. Run `cleanup-workspace`, remove all downloaded tool copies/runtime, and
-   publish the compact cleanup state after confirming removal.
+1. Commit/push the cleanup record, retrieve it from GitHub, and verify its
+   bytes before declaring the lifecycle complete.
 2. For native Windows/Android builds, use a full matching Godot editor/export
    template setup; Android additionally requires compatible JDK/SDK/build tools
    and external secure signing.

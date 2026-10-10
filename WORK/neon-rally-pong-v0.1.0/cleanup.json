@@ -1,0 +1,13 @@
+{
+  "action": "cleanup-workspace",
+  "performed_at": "2026-10-10T22:43:44Z",
+  "postconditions": {
+    "enclosing_workspace_exists": false,
+    "matching_godot_or_scons_processes": 0
+  },
+  "result": "Marker-protected run directory was deleted; enclosing disposable workspace, downloaded tool copies, source cache, and temporary runtime were then removed.",
+  "status": "passed",
+  "tool": "godot-headless",
+  "tool_version": "0.1.3",
+  "workspace": "/tmp/arena-neon-rally-pong.owhAZ8/run"
+}

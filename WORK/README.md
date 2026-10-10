@@ -19,3 +19,9 @@ information in the product README.
 Before deleting an Arena workspace, push the product, retrieve it from GitHub,
 and verify the stored bytes. The user-facing completion message must state the
 artifact path and give a direct download link.
+
+## Published products
+
+- [`Arena Pong v0.1.2`](arena-pong-v0.1.2/) — baseline headless source proof.
+- [`Neon Rally Pong v0.1.0`](neon-rally-pong-v0.1.0/) — neon variant that
+  exercised the complete available `godot-headless` lifecycle.

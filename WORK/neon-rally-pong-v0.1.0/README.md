@@ -41,7 +41,7 @@ complete workflow:
 | `export --target android` | Correctly stopped before output because Android SDK/JDK variables were absent. |
 | `export --target windows` | Correctly failed rather than emitting a placeholder binary; the compact confirmation runtime is not a full Windows export editor/template installation. |
 | `bundle` | Created this verified source artifact with the project’s actual display name and slug. |
-| `cleanup-workspace` | Runs after remote persistence is verified; its result is recorded in the project worklog. |
+| `cleanup-workspace` | Passed after remote persistence verification; the marker-protected deletion and enclosing-workspace removal are in [`cleanup.json`](cleanup.json). |
 
 The reports named in the table are stored beside the artifact. The expected
 failed export preflights are evidence of dependency checks, **not** native
