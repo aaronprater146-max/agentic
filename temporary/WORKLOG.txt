@@ -4,9 +4,9 @@ AGENTIC — LATEST PERSISTENT WORKLOG
 Last updated: 2026-10-10 (America/New_York)
 Session / assigned branch: arena/2f5538f1-agentic
 Latest confirmed remote storage ref: arena/2f5538f1-agentic at
-15f3b95 (toolbox v0.1.2 source; product upload pending this checkpoint)
-Current goal: deliver and persist the first verified Godot/Pong toolbox proof;
-then provision target export dependencies for real Windows and Android binaries.
+a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92
+Current goal: first verified Godot/Pong toolbox proof is remotely stored;
+next provision target export dependencies for real Windows and Android binaries.
 
 PERSISTENT PROJECT CONTEXT AND DECISIONS
 ----------------------------------------
@@ -60,12 +60,15 @@ ACTUAL TOOL EXECUTION AND VERIFICATION
 
 PRODUCT AND TARGET STATUS
 -------------------------
-- Staged product: `WORK/arena-pong-v0.1.2/`.
+- Published product: `WORK/arena-pong-v0.1.2/` at verified commit
+  `a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92`.
+- Direct source download:
+  `https://github.com/aaronprater146-max/agentic/raw/a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92/WORK/arena-pong-v0.1.2/ArenaPong-0.1.2-source.zip`.
 - Artifact: `ArenaPong-0.1.2-source.zip`, SHA-256
   `c36e2f1df62c5c3d16ccfa217a654f5284c25859c36f74d09119ee930abf4e3d`.
 - The ZIP contains project source, `export_presets.cfg`, the in-engine test,
   product manifest, and confirmation report; it excludes engines and `.godot`
-  caches. Archive structure was inspected locally.
+  caches. Archive structure was inspected locally and remote bytes were matched.
 - Windows: preset `Windows 10/11 x86_64` is configured. No `.exe` was built:
   matching Windows export templates were not present in this Arena workspace.
 - Android: preset requires minimum SDK API 28 (Android 9+) with `arm64-v8a` and
@@ -76,20 +79,24 @@ PRODUCT AND TARGET STATUS
 
 PUBLISHING AND CLEANUP STATUS
 -----------------------------
-- Tool source/index changes through `15f3b95` are pushed and remotely
-  retrievable. The product/docs/worklog in this checkpoint are local and await
-  commit, push, byte-level remote verification, and a commit-pinned raw link.
-- The active disposable workspace contains the downloaded tool copies, temporary
-  63 MB Godot runtime, source project/cache, and reports. It must be deleted
-  only after `WORK/` is confirmed remote. No runtime/dependency is in Git.
+- Product, toolbox source, documentation, and prior worklog were pushed at
+  `a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92`. GitHub raw retrieval confirmed
+  byte matches for the source ZIP, checksum manifest, reports, tool entry point,
+  toolbox index, handoff, and worklog.
+- This follow-up snapshot adds the immutable link and final cleanup state; push
+  and retrieve it before treating that metadata update as persisted.
+- The active disposable workspace still contains downloaded tool copies, the
+  temporary 63 MB Godot runtime, source projects/caches, and scratch reports.
+  No runtime/dependency is in Git; remove this workspace after the final
+  metadata push is verified.
 
 NEXT STEPS
 ----------
-1. Publish product, toolbox/documentation updates, and this worklog on the
-   assigned branch; retrieve remote files and fill the immutable product link.
-2. Delete the marked disposable Arena workspace and all downloaded tool copies;
-   retain only `WORK/` artifacts and canonical `tools/` source.
-3. For native target proof, obtain matching Godot export templates; for Android
+1. Publish this final link/worklog update, verify it remotely, then delete the
+   marked disposable Arena workspace and all downloaded tool copies.
+2. For native target proof, obtain matching Godot export templates; for Android
    also provision a compatible JDK/SDK in a disposable workspace, run actual
    exports, validate outputs on target-capable infrastructure, then store only
    those finished artifacts/reports in a new `WORK/` version directory.
+3. Choose the next requested toolbox capability after the native export proof
+   (for example, wider Godot automation, asset creation, or layered imaging).

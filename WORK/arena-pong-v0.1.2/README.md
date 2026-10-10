@@ -2,11 +2,11 @@
 
 ## Download
 
-The source bundle is published at:
+The source bundle was uploaded and retrieved back byte-for-byte from GitHub at
+commit [`a0a408a`](https://github.com/aaronprater146-max/agentic/commit/a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92).
 
-> **Pending first `WORK/` product commit.** This README will be updated with an
-> immutable, commit-pinned raw GitHub URL after the upload is verified.
-
+- **Direct download:** [ArenaPong-0.1.2-source.zip](https://github.com/aaronprater146-max/agentic/raw/a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92/WORK/arena-pong-v0.1.2/ArenaPong-0.1.2-source.zip)
+- **Browsable product directory:** [WORK/arena-pong-v0.1.2 at the verified commit](https://github.com/aaronprater146-max/agentic/tree/a0a408a07f5d0595d4e1ef2f45a4f781fc4b9f92/WORK/arena-pong-v0.1.2)
 - Artifact: [`ArenaPong-0.1.2-source.zip`](ArenaPong-0.1.2-source.zip)
 - SHA-256: `c36e2f1df62c5c3d16ccfa217a654f5284c25859c36f74d09119ee930abf4e3d`
 - Integrity manifest: [`CHECKSUMS.sha256`](CHECKSUMS.sha256)
