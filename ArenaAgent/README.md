@@ -31,6 +31,29 @@ Target engine: **Unreal Engine 5.8.x** (built for 5.8.3). Editor-only; safe to s
 - **Python escape hatch** — `run_python` executes editor Python for anything the dedicated tools can't express
   (disabled by default — flip *Allow Python Execution* in settings).
 
+## Compile (command line)
+
+Launcher installs ship the full build toolchain, but UnrealBuildTool compiles plugin modules as part of a
+*project* target. `Scripts/BuildPlugin.ps1` (or the `Build.bat` wrapper) handles that end-to-end: it
+auto-detects your engine (argument → `ARENA_UE_PATH` → registry → `C:\Program Files\Epic Games\UE_5.*`),
+creates a tiny scratch host project in `%TEMP%\ArenaAgentScratch` (kept for fast incremental rebuilds),
+mirrors the plugin into it and runs UBT:
+
+```bat
+ArenaAgent\Scripts\Build.bat
+rem or with an explicit engine:
+ArenaAgent\Scripts\Build.bat -EnginePath "C:\Program Files\Epic Games\UE_5.8"
+```
+
+Equivalent manual command, if you prefer (from any folder):
+
+```bat
+"<EngineRoot>\Engine\Build\BatchFiles\Build.bat" ArenaAgentScratchEditor Win64 Development -Project="<scratch>\ArenaAgentScratch.uproject" -WaitMutex
+```
+
+Exit code 0 = success. If UBT prints errors you don't recognize, paste them back into the Arena chat —
+the risky engine-API calls are isolated to `ArenaBlueprintUtils.cpp` / `ArenaToolRegistry.cpp`.
+
 ## Install
 
 1. Copy the `ArenaAgent` folder into `<YourProject>/Plugins/` (create `Plugins` if needed).

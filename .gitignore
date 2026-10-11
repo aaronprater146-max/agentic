@@ -1,0 +1,15 @@
+# Unreal build artifacts
+Intermediate/
+Binaries/
+Saved/
+DerivedDataCache/
+*.sln
+*.suo
+*.user
+*.VC.db
+*.opensdf
+*.sdf
+*.sln.DotSettings.user
+
+# Python
+__pycache__/
