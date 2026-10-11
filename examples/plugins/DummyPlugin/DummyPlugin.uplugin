@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Dummy Plugin",
+	"Description": "Minimal example descriptor used by uebuild examples and tests.",
+	"Category": "Examples",
+	"CreatedBy": "uebuild",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"EngineVersion": "5.3.0",
+	"SupportedTargetPlatforms": ["Win64", "Mac", "Linux", "LinuxArm64"],
+	"Modules": [
+		{
+			"Name": "DummyRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "DummyEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}

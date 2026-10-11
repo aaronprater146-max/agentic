@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Tooling
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# uebuild local output
+uebuild-logs/
+demo/logs/
+demo/dist/
+demo/config/

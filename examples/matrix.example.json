@@ -1,0 +1,22 @@
+// uebuild matrix config: build one plugin against several engine versions.
+// `engines` entries may be strings ("4.27", "5.3", "latest-ue5", a path,
+// a registry name) or dicts with per-engine overrides.
+{
+	"defaults": {
+		"platforms": ["Win64", "Linux"],
+		"outputRoot": "dist",
+		"rocket": true,
+		"strictIncludes": true,
+		"noDebugInfo": true,
+		"extraUatArgs": { "Unversioned": true }
+	},
+	"jobs": [
+		{
+			"plugin": "plugins/DummyPlugin/DummyPlugin.uplugin",
+			"engines": [
+				"4.27",
+				{ "name": "latest-ue5", "platforms": ["Win64", "Mac", "Linux", "LinuxArm64"] }
+			]
+		}
+	]
+}

@@ -1,0 +1,16 @@
+// Demo matrix used by the README walkthrough. Builds the example plugin
+// against every fake engine created by scripts/make_fake_engine.py.
+{
+	"defaults": {
+		"platforms": ["Win64", "Linux"],
+		"outputRoot": "dist",
+		"rocket": true,
+		"noDebugInfo": true
+	},
+	"jobs": [
+		{
+			"plugin": "../examples/plugins/DummyPlugin/DummyPlugin.uplugin",
+			"engines": ["4.27", "5.3"]
+		}
+	]
+}

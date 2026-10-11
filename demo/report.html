@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>uebuild plugin build report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+       background: #0f1420; color: #dde4f0; }
+header { padding: 28px 40px 12px; }
+header h1 { margin: 0; font-size: 22px; letter-spacing: .5px; }
+header h1 .accent { color: #4ea1ff; }
+header .meta { color: #8b97ad; font-size: 13px; margin-top: 6px; }
+.cards { display: flex; gap: 14px; padding: 18px 40px 6px; flex-wrap: wrap; }
+.card { background: #182032; border: 1px solid #26314a; border-radius: 10px;
+        padding: 14px 22px; min-width: 130px; }
+.card .num { font-size: 26px; font-weight: 700; }
+.card .lbl { color: #8b97ad; font-size: 12px; text-transform: uppercase;
+             letter-spacing: 1px; }
+.card.ok .num { color: #3fd68f; }
+.card.bad .num { color: #ff5f6e; }
+.card.warn .num { color: #ffcf5c; }
+table { width: calc(100% - 80px); margin: 20px 40px 40px; border-collapse: collapse;
+        background: #131a2a; border: 1px solid #26314a; border-radius: 10px;
+        overflow: hidden; }
+th, td { text-align: left; padding: 10px 14px; font-size: 14px;
+         border-bottom: 1px solid #1e2740; vertical-align: top; }
+th { background: #182032; color: #8b97ad; font-size: 12px;
+     text-transform: uppercase; letter-spacing: 1px; }
+tr:last-child td { border-bottom: none; }
+.pill { display: inline-block; padding: 2px 12px; border-radius: 999px;
+        font-size: 12px; font-weight: 700; }
+.pill.pass { background: rgba(63,214,143,.15); color: #3fd68f; }
+.pill.fail { background: rgba(255,95,110,.15); color: #ff5f6e; }
+.chips span, .chips td { display: inline-block; }
+.chip { display: inline-block; background: #1e2740; border-radius: 6px;
+        padding: 1px 8px; margin: 1px 2px; font-size: 12px; color: #a9b8d6; }
+.mono { font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+        font-size: 12px; word-break: break-all; color: #9fb3d9; }
+details { margin-top: 6px; }
+summary { cursor: pointer; color: #4ea1ff; font-size: 13px; }
+details pre { background: #0b1020; border: 1px solid #26314a; border-radius: 8px;
+              padding: 10px 12px; white-space: pre-wrap; word-break: break-word;
+              max-height: 260px; overflow: auto; font-size: 12px; color: #e68a8a; }
+details pre.warn { color: #d8bc72; }
+a { color: #4ea1ff; }
+.empty { padding: 60px 40px; color: #8b97ad; font-size: 15px; }
+</style></head>
+<body>
+<header>
+  <h1><span class="accent">ue</span>build &middot; uebuild plugin build report</h1>
+  <div class="meta">Generated 2026-10-11T11:03:16+00:00 &middot; uebuild 0.1.0</div>
+</header>
+<section class="cards">
+  <div class="card"><div class="num">2</div><div class="lbl">Builds</div></div>
+  <div class="card ok"><div class="num">2</div><div class="lbl">Passed</div></div>
+  <div class="card bad"><div class="num">0</div><div class="lbl">Failed</div></div>
+  <div class="card warn"><div class="num">0</div><div class="lbl">Warnings</div></div>
+  <div class="card"><div class="num">0s</div><div class="lbl">Total time</div></div>
+</section>
+<table><thead><tr><th>Status</th><th>Plugin</th><th>Engine</th><th>Platforms</th><th>Duration</th><th>Errors</th><th>Warnings</th><th>Details</th></tr></thead><tbody><tr><td><span class="pill pass">PASS</span></td><td><b>DummyPlugin</b><div class='mono' style='color:#8b97ad'>DummyPlugin | UE4 4.27.2</div></td><td>UE4 4.27.2</td><td><span class="chips"><span class="chip">Win64</span><span class="chip">Linux</span></span></td><td>0s</td><td>0</td><td>0</td><td><span class="mono">BUILD SUCCESSFUL</span><br/>log: <span class='mono'>demo/uebuild-logs/DummyPlugin_4.27.2_20261011T110316Z.log</span><details><summary>command (1)</summary><pre>/home/user/agentic/demo/UE_4.27/Engine/Build/BatchFiles/RunUAT.sh BuildPlugin -Plugin=/home/user/agentic/examples/plugins/DummyPlugin/DummyPlugin.uplugin -Package=/home/user/agentic/demo/dist/DummyPlugin/4.27.2 -TargetPlatforms=Win64+Linux -Rocket -NoDebugInfo -NoP4 -UTF8Output</pre></details></td></tr><tr><td><span class="pill pass">PASS</span></td><td><b>DummyPlugin</b><div class='mono' style='color:#8b97ad'>DummyPlugin | UE5 5.3.2</div></td><td>UE5 5.3.2</td><td><span class="chips"><span class="chip">Win64</span><span class="chip">Linux</span></span></td><td>0s</td><td>0</td><td>0</td><td><span class="mono">BUILD SUCCESSFUL</span><br/>log: <span class='mono'>demo/uebuild-logs/DummyPlugin_5.3.2_20261011T110316Z.log</span><details><summary>command (1)</summary><pre>/home/user/agentic/demo/UE_5.3/Engine/Build/BatchFiles/RunUAT.sh BuildPlugin -Plugin=/home/user/agentic/examples/plugins/DummyPlugin/DummyPlugin.uplugin -Package=/home/user/agentic/demo/dist/DummyPlugin/5.3.2 -TargetPlatforms=Win64+Linux -Rocket -NoDebugInfo -NoP4 -UTF8Output</pre></details></td></tr></tbody></table>
+</body></html>
