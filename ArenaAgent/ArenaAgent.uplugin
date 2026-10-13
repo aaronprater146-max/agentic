@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Arena Agent",
+	"Description": "An in-editor AI agent (Arena.ai) that can create Blueprints, functions, actors, components and full gameplay systems through a persistent chat window.",
+	"Category": "Artificial Intelligence",
+	"CreatedBy": "Arena.ai",
+	"CreatedByURL": "https://arena.ai",
+	"DocsURL": "https://arena.ai",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "5.8.3",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "ArenaAgent",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "PythonScriptPlugin",
+			"Enabled": true
+		}
+	]
+}
