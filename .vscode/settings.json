@@ -1,0 +1,31 @@
+{
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
+    "files.associations": {
+        "*.uplugin": "json",
+        "*.uproject": "json",
+        "*.Build.cs": "csharp",
+        "*.Target.cs": "csharp"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.build/scratch_*": true,
+        "**/Intermediate": true,
+        "**/Binaries": true,
+        "**/DerivedDataCache": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/Intermediate": true,
+        "**/Binaries": true,
+        "**/DerivedDataCache": true,
+        "**/.build": true
+    }
+}

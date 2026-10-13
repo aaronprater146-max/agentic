@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Antigravity Editor Integration",
+	"Description": "Seamlessly integrates the Antigravity Editor as a native Source Code Editor within Unreal Engine 5.8.",
+	"Category": "Programming",
+	"CreatedBy": "Vahab Ahmadvand & Agentic",
+	"CreatedByURL": "https://github.com/aaronprater146-max/agentic",
+	"DocsURL": "https://antigravity.google",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "5.8.3",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "AntigravitySourceCodeAccess",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Linux",
+				"Mac"
+			]
+		}
+	]
+}
