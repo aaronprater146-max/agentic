@@ -1,0 +1,117 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "UE5: Create New Plugin (UE 5.8.3)",
+            "type": "shell",
+            "command": "python3 -m agentic create ${input:pluginName} --template ${input:pluginTemplate}",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "UE5: Build Plugin (Development - UBT)",
+            "type": "shell",
+            "command": "python3 -m agentic build ${input:targetPlugin} --mode ubt",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "UE5: Package Plugin (RunUAT Distribution)",
+            "type": "shell",
+            "command": "python3 -m agentic package ${input:targetPlugin}",
+            "group": "build",
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "UE5: Validate & Lint Plugins",
+            "type": "shell",
+            "command": "python3 -m agentic validate --all",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "UE5: Clean Build Artifacts",
+            "type": "shell",
+            "command": "rm -rf .build Saved Intermediate Binaries",
+            "windows": {
+                "command": "powershell -Command Remove-Item -Recurse -Force -ErrorAction SilentlyContinue .build, Saved, Intermediate, Binaries"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "UE5: Build ArenaAgent Plugin",
+            "type": "shell",
+            "command": "python3 -m agentic build ArenaAgent",
+            "group": "build",
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "UE5: Build AntigravitySourceCodeAccess Plugin",
+            "type": "shell",
+            "command": "python3 -m agentic build AntigravitySourceCodeAccess",
+            "group": "build",
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "pluginName",
+            "type": "promptString",
+            "description": "Enter the name of your new UE 5.8.3 plugin:",
+            "default": "MyCustomPlugin"
+        },
+        {
+            "id": "pluginTemplate",
+            "type": "pickString",
+            "description": "Choose plugin template architecture:",
+            "options": [
+                "runtime",
+                "editor",
+                "blueprint-library",
+                "agent",
+                "minimal"
+            ],
+            "default": "runtime"
+        },
+        {
+            "id": "targetPlugin",
+            "type": "promptString",
+            "description": "Path or name of the plugin to build/package:",
+            "default": "ArenaAgent"
+        }
+    ]
+}

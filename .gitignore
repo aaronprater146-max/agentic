@@ -13,3 +13,9 @@ DerivedDataCache/
 
 # Python
 __pycache__/
+*.pyc
+.pytest_cache/
+
+# Agentic build artifacts
+.build/
+
